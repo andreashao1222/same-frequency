@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Share2, Sparkles } from "lucide-react";
-import { getTasteProfile, getTasteProfileFromTags, getCulturalMatches, getMusicalOpposite } from "@/lib/taste";
+import { getTasteProfile } from "@/lib/taste";
 import type { AIReport, CulturalMatch } from "@/lib/ai";
 
 type Profile = {
@@ -128,10 +128,21 @@ function MatchesContent() {
   }
   if (!profile) return <main className="min-h-screen grid place-items-center noise">Loading…</main>;
 
-  const fallbackTaste = getTasteProfileFromTags(profile.artists, profile.taste_tags);
   const ai = profile.ai_report;
-  const taste = ai ? {
-    ...fallbackTaste,
+  if (!ai) {
+    return (
+      <main className="min-h-screen grid place-items-center noise p-6">
+        <div className="max-w-xl text-center">
+          <p className="text-xs font-bold uppercase tracking-[.2em]">same frequency.</p>
+          <h1 className="display mt-5 text-5xl">AI taste report unavailable.</h1>
+          <p className="mt-5 text-neutral-600">We couldn't generate this report yet. Please try opening it again in a moment.</p>
+          <Link href="/join" className="mt-7 inline-block bg-black px-6 py-3 font-bold text-white">make my own →</Link>
+        </div>
+      </main>
+    );
+  }
+
+  const taste = {
     tags: ai.tags,
     description: ai.description,
     portrait: ai.portrait,
@@ -141,11 +152,10 @@ function MatchesContent() {
     place: ai.place,
     season: ai.season,
     feeling: ai.feeling
-  } : fallbackTaste;
-  const cultural: CulturalMatch[] = ai?.culturalMatches?.length
-    ? ai.culturalMatches
-    : getCulturalMatches(profile.artists, profile.taste_tags);
-  const opposite = ai?.opposite ?? getMusicalOpposite(profile.artists, profile.taste_tags);
+  } as ReturnType<typeof getTasteProfile>;
+
+  const cultural: CulturalMatch[] = ai.culturalMatches;
+  const opposite = ai.opposite;
   const isOwnReport = profile.id === ownIdRef.current;
 
   const share = async () => {

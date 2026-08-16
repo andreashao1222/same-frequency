@@ -115,20 +115,60 @@ function cleanReport(value: unknown): AIReport {
   });
 }
 
+export class AIAnalysisError extends Error {
+  status?: number;
+  constructor(message: string, status?: number) {
+    super(message);
+    this.name = "AIAnalysisError";
+    this.status = status;
+  }
+}
+
 export async function analyzeTasteWithAI(
   artists: string[],
   artistGenres: string[][] = []
-): Promise<AIReport | null> {
+): Promise<AIReport> {
   const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return null;
+  if (!apiKey) throw new AIAnalysisError("OPENAI_API_KEY is missing on the server.");
 
   const model = process.env.OPENAI_MODEL || "gpt-5.6";
   const artistContext = artists.map((artist, i) => {
     const genres = artistGenres[i]?.filter(Boolean).join(", ");
-    return `${i + 1}. ${artist}${genres ? ` (catalog genres: ${genres})` : ""}`;
+    return `${i + 1}. ${artist}${genres ? ` (Spotify catalog genres: ${genres})` : ""}`;
   }).join("\n");
 
-  const input = `You are the taste editor for an experimental music-culture website called same frequency.\n\nAnalyze this listener's five favorite artists:\n${artistContext}\n\nYour job is NOT to classify the listener with a generic genre label. Infer the interesting intersection of these artists: production choices, songwriting, vocal style, emotional register, ambition, cultural scale, rhythm, texture, theatricality, intimacy, etc. Pay attention to contradictions between the artists too.\n\nWrite a playful, stylish cultural report that feels specific enough that the listener might screenshot it. Do not make claims about mental health, diagnosis, intelligence, morality, or other sensitive traits. Keep it about taste and aesthetics.\n\nRequirements:\n- tags: 3-6 concise sonic/aesthetic tags. Use the actual dominant genres when appropriate (for example hip-hop, rap, trap, R&B, indie rock, art pop, etc.). Never default to indie/alternative unless the selected artists genuinely support that.\n- portrait: 2-3 sentences, witty but grounded in the five artists.\n- redFlag: one funny sentence about a music-taste habit.\n- color/weather/place/season/feeling: vivid but concise.\n- culturalMatches: exactly four items: one artist, one album, one movie, and one book. They should be genuinely different from one another and connected to the listener's taste for a clear reason. Avoid recommending any of the five input artists. The artist recommendation should be a plausible discovery, not an obvious adjacent superstar.\n- opposite: choose a deliberately opposite cultural object (artist, album, movie, or book). It should be funny and defensible as an aesthetic opposite, not just a random unpopular thing.\n- Do not provide URLs; the website will create Spotify search links for music items.\n- Do not mention that you are an AI.\n`;
+  const input = `You are the taste editor for an experimental music-culture website called same frequency.
+
+Analyze this listener's five favorite artists:
+${artistContext}
+
+This is a taste-analysis task, not a generic recommendation task. Treat the five artists as evidence and reason about what they have in common AND where they differ. Do not assume that "indie" or "alternative" is the default. If the artists are primarily hip-hop, rap, trap, R&B, pop, metal, country, electronic, jazz, etc., say so explicitly.
+
+Infer useful dimensions such as:
+- actual genre / subgenre
+- production style
+- rhythm and instrumentation
+- vocal approach
+- songwriting / lyrical style
+- emotional register
+- scale: intimate vs maximalist
+- theatricality, experimentation, polish, rawness
+- cultural or aesthetic tendencies
+
+Write a playful, stylish cultural report that feels specific enough that the listener might screenshot it. Keep it about music and cultural taste. Do not make claims about mental health, diagnosis, intelligence, morality, or other sensitive traits.
+
+Requirements:
+- tags: 3-6 concise sonic/aesthetic tags. Use actual dominant genres when appropriate (hip-hop, rap, trap, R&B, pop rap, drill, jazz, metal, etc.). Never output indie/alternative unless the selected artists genuinely support them.
+- description: one concise sentence summarizing the listener's sonic world.
+- portrait: 2-3 witty but grounded sentences that clearly reference the musical evidence.
+- redFlag: one funny sentence about a music-taste habit.
+- color/weather/place/season/feeling: vivid but concise metaphors.
+- culturalMatches: exactly four items: one artist, one album, one movie, and one book. Make them genuinely connected to this specific taste, not a fixed generic list. The artist should be a plausible discovery rather than one of the five input artists.
+- opposite: choose one deliberately opposite cultural object (artist, album, movie, or book). It should be funny and defensible as an aesthetic opposite.
+- Do not provide URLs; the website creates links for music items.
+- Do not mention that you are an AI.
+
+Before returning the JSON, sanity-check the tags against the five artists. If five major rap/hip-hop artists are supplied, a result dominated by indie/alternative is incorrect.`;
 
   try {
     const response = await fetch("https://api.openai.com/v1/responses", {
@@ -149,19 +189,51 @@ export async function analyzeTasteWithAI(
             schema
           }
         }
-      })
+      }),
+      cache: "no-store"
     });
 
+    const rawText = await response.text();
     if (!response.ok) {
-      console.error("OpenAI taste analysis failed:", response.status, await response.text());
-      return null;
+      let message = `OpenAI request failed (${response.status}).`;
+      try {
+        const parsed = JSON.parse(rawText);
+        const apiMessage = parsed?.error?.message;
+        if (apiMessage) message += ` ${apiMessage}`;
+      } catch {}
+      console.error("OpenAI taste analysis failed:", response.status, rawText);
+      throw new AIAnalysisError(message, response.status);
     }
 
-    const data = await response.json();
-    if (!data.output_text) return null;
-    return cleanReport(JSON.parse(data.output_text));
+    let data: any;
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      throw new AIAnalysisError("OpenAI returned an invalid response.");
+    }
+
+    if (!data.output_text) {
+      console.error("OpenAI response had no output_text:", data);
+      throw new AIAnalysisError("OpenAI returned no taste report.");
+    }
+
+    let parsedReport: unknown;
+    try {
+      parsedReport = JSON.parse(data.output_text);
+    } catch {
+      throw new AIAnalysisError("OpenAI returned invalid structured output.");
+    }
+
+    const report = cleanReport(parsedReport);
+
+    if (report.tags.length < 3 || report.culturalMatches.length !== 4) {
+      throw new AIAnalysisError("AI returned an incomplete taste report. Please try again.");
+    }
+
+    return report;
   } catch (error) {
+    if (error instanceof AIAnalysisError) throw error;
     console.error("OpenAI taste analysis error:", error);
-    return null;
+    throw new AIAnalysisError("Could not complete the AI taste analysis.");
   }
 }

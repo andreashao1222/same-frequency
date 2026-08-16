@@ -28,3 +28,18 @@ Push the changed files to GitHub, then let Vercel deploy the new commit. After d
 - The generated report is stored in Supabase and reused when someone opens that profile.
 - Matching now gives more weight to the AI-derived taste tags and less weight to exact artist overlap.
 - Existing profiles without `ai_report` continue to use the old fallback logic.
+
+
+## V8 behavior
+
+AI analysis is now required for a profile report. The site no longer silently falls back to the old hard-coded indie/alternative recommendation system.
+
+If `OPENAI_API_KEY` is missing or the API request fails, `/api/submit` returns a visible error instead of saving a fake fallback report.
+
+Profiles created by older versions without `ai_report` are automatically regenerated the first time their report is opened.
+
+Required Vercel environment variable:
+- `OPENAI_API_KEY`
+
+Optional:
+- `OPENAI_MODEL` (defaults to `gpt-5.6`)
