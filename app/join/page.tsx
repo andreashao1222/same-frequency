@@ -83,7 +83,7 @@ export default function JoinPage() {
       </nav>
 
       <div className="mx-auto max-w-3xl px-6 pb-20 pt-8">
-        <p className="text-xs font-bold uppercase tracking-[.25em]">join the taste pool</p>
+        <p className="retro-kicker">join the taste pool</p>
         <h1 className="display mt-5 text-6xl leading-none md:text-8xl">What are you<br/><i>listening to?</i></h1>
 
         <form onSubmit={submit} className="mt-14 space-y-12">
@@ -95,7 +95,7 @@ export default function JoinPage() {
 
             <div className="flex min-h-16 flex-wrap gap-2 border-b-2 border-black py-3">
               {artists.map((artist, i) => (
-                <span key={artist.id} className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-bold text-white">
+                <span key={artist.id} className="inline-flex items-center gap-2 retro-tag px-4 py-2">
                   <span className="text-neutral-400">{i + 1}</span>{artist.name}
                   <button type="button" onClick={() => removeArtist(artist.id)}><X size={14}/></button>
                 </span>
@@ -114,7 +114,7 @@ export default function JoinPage() {
               <div className="mt-2 border border-black bg-white">
                 {searching && <p className="px-4 py-3 text-sm text-neutral-500">searching Spotify…</p>}
                 {results.map(artist => (
-                  <button type="button" key={artist.id} onClick={() => addArtist(artist)} className="flex w-full items-center justify-between px-4 py-3 text-left hover:bg-[#d9ff57]">
+                  <button type="button" key={artist.id} onClick={() => addArtist(artist)} className="flex w-full items-center justify-between px-4 py-3 text-left hover:bg-[#d8df62]">
                     {artist.name}<Plus size={16}/>
                   </button>
                 ))}
@@ -139,7 +139,7 @@ export default function JoinPage() {
 
           {error && <p className="border border-red-700 bg-red-50 p-3 text-sm font-bold text-red-800">{error}</p>}
 
-          <button className="flex w-full items-center justify-center gap-3 bg-black px-7 py-5 text-lg font-bold text-white hover:bg-[#222]">
+          <button className="retro-button flex w-full items-center justify-center gap-3 bg-black px-7 py-5 text-lg font-bold text-white hover:bg-[#222]">
             <Check size={20}/> Find my frequency
           </button>
 

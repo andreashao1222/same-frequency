@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f5f1e8;
-  --ink: #171714;
-  --muted: #747169;
-  --line: #d5cfc1;
-  --accent: #d9ff57;
-  --accent-2: #ff795f;
+  --paper: #f2eee4;
+  --paper-deep: #e9e3d6;
+  --ink: #171614;
+  --muted: #6f6a62;
+  --line: #1b1916;
+  --accent: #d8df62;
+  --accent-2: #b65a4c;
+  --display-font: Didot, "Bodoni 72", "Baskerville", Georgia, "Times New Roman", serif;
+  --body-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono-font: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 * { box-sizing: border-box; }
@@ -17,10 +21,13 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 10%, rgba(217,255,87,.24), transparent 25%),
-    radial-gradient(circle at 90% 80%, rgba(255,121,95,.12), transparent 25%),
+    radial-gradient(circle at 12% 8%, rgba(216,223,98,.16), transparent 24%),
+    radial-gradient(circle at 92% 82%, rgba(182,90,76,.09), transparent 26%),
+    linear-gradient(rgba(255,255,255,.16), rgba(255,255,255,.16)),
     var(--paper);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button, input { font: inherit; }
@@ -28,20 +35,25 @@ button, input { font: inherit; }
 ::selection { background: var(--accent); color: var(--ink); }
 
 .noise {
-  background-image: radial-gradient(rgba(0,0,0,.055) .7px, transparent .7px);
-  background-size: 5px 5px;
+  background-image:
+    radial-gradient(rgba(0,0,0,.045) .65px, transparent .65px),
+    linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.12));
+  background-size: 5px 5px, auto;
 }
 
 .grid-bg {
   background-image:
     linear-gradient(to right, rgba(23,23,20,.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(23,23,20,.055) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to bottom, rgba(23,23,20,.055) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,.025) .7px, transparent .7px);
+  background-size: 32px 32px, 32px 32px, 5px 5px;
 }
 
 .display {
-  font-family: Georgia, "Times New Roman", serif;
-  letter-spacing: -.055em;
+  font-family: var(--display-font);
+  letter-spacing: -.058em;
+  font-weight: 600;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .marquee {
@@ -64,7 +76,7 @@ button, input { font: inherit; }
 
 .card {
   border: 1px solid var(--ink);
-  background: rgba(255,255,255,.34);
+  background: rgba(255,255,255,.30);
   box-shadow: 5px 5px 0 var(--ink);
 }
 
@@ -74,3 +86,48 @@ button, input { font: inherit; }
 }
 
 .transition-card { transition: transform .16s ease, box-shadow .16s ease; }
+
+/* Editorial / archival details */
+.retro-kicker {
+  font-family: var(--mono-font);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.retro-label {
+  font-family: var(--mono-font);
+  letter-spacing: .16em;
+}
+
+.retro-button {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+}
+
+.retro-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.retro-rule {
+  border-top: 1px solid var(--ink);
+}
+
+.retro-tag {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono-font);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .display { letter-spacing: -.045em; }
+}

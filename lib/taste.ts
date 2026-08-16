@@ -85,7 +85,7 @@ const redFlags:Record<string,string>={
   "art pop":"You will defend the weird track everyone else skipped.", "alternative":"You think being slightly difficult to categorize is a personality trait.",
   "electronic":"You will forgive a song almost anything if the synth sound is good enough.", "shoegaze":"You like music that sounds better the less clearly you can hear it.",
 };
-const scenery=["#d9ff57","#c7d2fe","#fecdd3","#bae6fd","#fde68a","#ddd6fe"];
+const scenery=["#d8df62","#b8b1a3","#c98f87","#a8b6b0","#d4b86a","#aaa29a"];
 const weather=["overcast but electric","warm rain at midnight","a clear night with too many stars","fog lifting slowly","humid summer air","cold sunlight"];
 const places=["a record store after closing","the back seat of a night bus","a tiny cinema","a crowded city street at 1 a.m.","a bedroom with the window open","a museum on a weekday"];
 const seasons=["late autumn","humid summer","early spring","winter","golden October","the week between seasons"];
