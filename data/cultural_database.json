@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "source_policy": {
     "artist_metadata": "MusicBrainz",
     "artist_metadata_note": "Tags/genres are fetched during the build step; do not hand-invent MusicBrainz tags.",
@@ -249,6 +249,174 @@
         "PJ Harvey",
         "Yeah Yeah Yeahs",
         "The Smashing Pumpkins"
+      ]
+    },
+    {
+      "id": "kpop_core",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop",
+        "dance-pop",
+        "electropop",
+        "r&b",
+        "hip-hop"
+      ],
+      "read": "You like pop as a full environment: choreography, visual identity, production detail, and a chorus that knows exactly when to arrive.",
+      "readVariants": [
+        "You hear pop as world-building — the song matters, but so do the styling, pacing, performance and tiny production choices around it.",
+        "Your taste suggests you enjoy precision without sterility: big hooks, polished surfaces, and enough personality underneath to make the whole thing feel alive.",
+        "You seem drawn to music that understands spectacle as an art form. You want the details to be intentional, but you still need a real emotional payoff.",
+        "You like songs that can be immediate and meticulously constructed at the same time — maximal enough to be fun, specific enough to become yours."
+      ],
+      "movies": [
+        "Decision to Leave",
+        "The Handmaiden",
+        "Past Lives",
+        "Perfect Days",
+        "Whiplash",
+        "Barbie"
+      ],
+      "books": [
+        "Convenience Store Woman",
+        "Pachinko",
+        "The Vegetarian",
+        "Kim Jiyoung, Born 1982",
+        "If I Had Your Face",
+        "Crying in H Mart"
+      ],
+      "artists": [
+        "KISS OF LIFE",
+        "BIBI",
+        "Yerin Baek",
+        "DEAN",
+        "NMIXX",
+        "Purple Kiss",
+        "RIIZE",
+        "XG",
+        "AKMU",
+        "WOODZ"
+      ],
+      "albums": [
+        "The Perfect Red Velvet",
+        "Formula of Love: O+T=<3",
+        "Get Up",
+        "The ReVe Festival 2022 – Birthday",
+        "I’ve IVE",
+        "FML",
+        "Wiped Out"
+      ]
+    },
+    {
+      "id": "jpop_core",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop",
+        "electropop",
+        "indie pop",
+        "japanese rock",
+        "r&b"
+      ],
+      "read": "You like pop with a slightly stranger relationship to genre: immaculate melodies, left turns, eccentric textures, and a sense that the song could only have been made there.",
+      "readVariants": [
+        "You seem drawn to Japanese pop's ability to make something extremely catchy feel oddly specific — polished melody on one side, a tiny detour on the other.",
+        "Your taste likes detail. You can handle sweetness, but you want a weird chord, an unusual texture, or an unexpected arrangement hiding inside it.",
+        "You seem to enjoy music that treats pop as a playground rather than a fixed format — city-pop gloss, indie mess, electronic precision and rock energy can all coexist.",
+        "You want hooks with personality. The ideal song is accessible on the surface and just peculiar enough underneath to reward another listen."
+      ],
+      "movies": [
+        "Drive My Car",
+        "Shoplifters",
+        "Perfect Days",
+        "Millennium Mambo",
+        "Love Exposure",
+        "After Yang"
+      ],
+      "books": [
+        "Convenience Store Woman",
+        "Kitchen",
+        "Breasts and Eggs",
+        "The Memory Police",
+        "Norwegian Wood",
+        "The Nakano ThriftShop"
+      ],
+      "artists": [
+        "Wednesday Campanella",
+        "Chelmico",
+        "Hitsujibungaku",
+        "Kroi",
+        "Ichiko Aoba",
+        "For Tracy Hyde",
+        "TOMOO",
+        "iri",
+        "Yorushika",
+        "Cö shu Nie"
+      ],
+      "albums": [
+        "BADモード",
+        "HELP EVER HURT NEVER",
+        "THE BOOK",
+        "狂言",
+        "Replica",
+        "Fantôme",
+        "Kamikaze Taxi"
+      ]
+    },
+    {
+      "id": "chinese_pop_core",
+      "tags": [
+        "mandopop",
+        "c-pop",
+        "chinese pop",
+        "singer-songwriter",
+        "r&b",
+        "rock",
+        "cantopop"
+      ],
+      "read": "You seem to care about melody first, but not melody alone: lyrics, vocal character, regional atmosphere and the emotional memory attached to a song all matter.",
+      "readVariants": [
+        "You have a soft spot for songs that become attached to a specific time in your life. Melody gets you in; language, voice and memory make you stay.",
+        "Your taste sits where pop craft meets lived experience — a strong topline matters, but so does the feeling that somebody actually meant what they sang.",
+        "You seem to listen for emotional specificity. You can enjoy polished pop, but you want a voice, phrase or arrangement that makes it feel personal rather than generic.",
+        "You like music with a sense of place. Whether it is Mandarin, Cantonese, indie rock or R&B, you seem to care about the world a song carries with it."
+      ],
+      "movies": [
+        "In the Mood for Love",
+        "Yi Yi",
+        "Chungking Express",
+        "A Brighter Summer Day",
+        "Better Days",
+        "Us and Them"
+      ],
+      "books": [
+        "The Three-Body Problem",
+        "To Live",
+        "The Last Quarter of the Moon",
+        "The Woman Warrior",
+        "The Vegetarian",
+        "Love in a Fallen City"
+      ],
+      "artists": [
+        "9m88",
+        "落日飛車",
+        "告五人",
+        "林家謙",
+        "陳蕾",
+        "鄭宜農",
+        "蛋堡",
+        "魏如萱",
+        "方大同",
+        "馬思唯"
+      ],
+      "albums": [
+        "叶惠美",
+        "范特西",
+        "寓言",
+        "DEPARTURES",
+        "My Dear Life",
+        "旅行的意义",
+        "后青春期的诗"
       ]
     }
   ],

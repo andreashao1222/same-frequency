@@ -1,1 +1,4808 @@
-{"version":1,"source":"MusicBrainz (generate with npm run build:musicbrainz)","artistCount":0,"artists":[],"missing":[]}
+{
+  "version": 2,
+  "source": "Curated local genre expansion (K-pop / J-pop / Chinese-language pop)",
+  "artistCount": 600,
+  "artists": [
+    {
+      "name": "BTS",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "BLACKPINK",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "TWICE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "EXO",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "SEVENTEEN",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "NCT 127",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "NCT DREAM",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "NCT WISH",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "NCT U",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Stray Kids",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "ATEEZ",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "TXT",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "ENHYPEN",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "LE SSERAFIM",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "aespa",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "IVE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "NewJeans",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "ITZY",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Red Velvet",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Girls' Generation",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "SHINee",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Super Junior",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "TVXQ",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "BIGBANG",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "2NE1",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Wonder Girls",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "KARA",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "f(x)",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Apink",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "GFRIEND",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "MAMAMOO",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "OH MY GIRL",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "WJSN",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "LOONA",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "STAYC",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "KISS OF LIFE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "BABYMONSTER",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "ILLIT",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "RIIZE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "ZEROBASEONE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "BOYNEXTDOOR",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "TWS",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "THE BOYZ",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "MONSTA X",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "GOT7",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "iKON",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "WINNER",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "TREASURE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "DAY6",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "CNBLUE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "FTISLAND",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "BTOB",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "INFINITE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "VIXX",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "B1A4",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Block B",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "P1Harmony",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "CIX",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "CRAVITY",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "EVNNE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "ONEUS",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "ONEWE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "VERIVERY",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "WEi",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "AB6IX",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "ASTRO",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "SF9",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Pentagon",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "ONF",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Golden Child",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "MCND",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "DKZ",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "WEKIMEKI",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "EVERGLOW",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "fromis_9",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "NMIXX",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Billlie",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Purple Kiss",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Dreamcatcher",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "tripleS",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Kep1er",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "CSR",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "H1-KEY",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "LIGHTSUM",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "CLASS:y",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "woo!ah!",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Rocket Punch",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Cherry Bullet",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Nature",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "DreamNote",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Weki Meki",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Saturday",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Cignature",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Secret Number",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Lapillus",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Limelight",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Queenz Eye",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "EL7Z UP",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "UNIS",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Young Posse",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "BADVILLAIN",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "MEOVV",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "KATSEYE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "XG",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "KARD",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "MOMOLAND",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "CLC",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "EXID",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "AOA",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "SISTAR",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "4Minute",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Miss A",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "After School",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "T-ara",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Brown Eyed Girls",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Girl's Day",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Secret",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Rainbow",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Dal Shabet",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Nine Muses",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Hello Venus",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Jewelry",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "BAP",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "VICTON",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "UP10TION",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "TEEN TOP",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "MBLAQ",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "ZE:A",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "U-KISS",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "SS501",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "2PM",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "2AM",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "BEAST",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Highlight",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Shinhwa",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "H.O.T.",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "g.o.d",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Sechs Kies",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Fin.K.L",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "S.E.S.",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Baby V.O.X",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Koyote",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Turbo",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Epik High",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Dynamicduo",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Zion.T",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "DEAN",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Crush",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Heize",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Sunmi",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Taeyeon",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "IU",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "BoA",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "HyunA",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Chungha",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Hwasa",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Wheein",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Solar",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Yerin Baek",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "BIBI",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "YENA",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "JEON SOMI",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Kwon Eunbi",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Lee Hi",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "AKMU",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "ZICO",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Jay Park",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Loco",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Gray",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Simon Dominic",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "pH-1",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Beenzino",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "DPR IAN",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "DPR LIVE",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "WOODZ",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Colde",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Younha",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Nell",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "The Rose",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "LUCY",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Xdinary Heroes",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "QWER",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "ARTMS",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Loossemble",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Chuu",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Yves",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Heejin",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Taemin",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Key",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Onew",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Minho",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "Kai",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "D.O.",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "idol pop"
+      ]
+    },
+    {
+      "name": "Baekhyun",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "dance-pop"
+      ]
+    },
+    {
+      "name": "Chen",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Suho",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Jungkook",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Jimin",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "V",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "alt-pop"
+      ]
+    },
+    {
+      "name": "RM",
+      "tags": [
+        "k-pop",
+        "korean pop",
+        "ballad"
+      ]
+    },
+    {
+      "name": "Utada Hikaru",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Hamasaki Ayumi",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Namie Amuro",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Koda Kumi",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Mika Nakashima",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Sheena Ringo",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Tokyo Jihen",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Perfume",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Kyary Pamyu Pamyu",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "AKB48",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "SKE48",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "NMB48",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "HKT48",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "NGT48",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "STU48",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Morning Musume",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "ANGERME",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Juice=Juice",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "BEYOOOOONDS",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "FRUITS ZIPPER",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Atarashii Gakko!",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Babymetal",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "BiSH",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "BiS",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Momoiro Clover Z",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Nogizaka46",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Sakurazaka46",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Hinatazaka46",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "=LOVE",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "≠ME",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "CANDY TUNE",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "iLiFE!",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "f5ve",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "FAKY",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Little Glee Monster",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "SCANDAL",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Silent Siren",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Chai",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Band-Maid",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "PassCode",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Necronomidol",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Dempagumi.inc",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Wednesday Campanella",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Chelmico",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Daoko",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Chanmina",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Aimer",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "LiSA",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "ReoNa",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "YOASOBI",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Ado",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Vaundy",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Fujii Kaze",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Kenshi Yonezu",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "King Gnu",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Mrs. GREEN APPLE",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Official HIGE DANDism",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "back number",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Saucy Dog",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Novelbright",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "sumika",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Sekai no Owari",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Alexandros",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "BUMP OF CHICKEN",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "RADWIMPS",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Asian Kung-Fu Generation",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "ELLEGARDEN",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "ONE OK ROCK",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "UVERworld",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "MAN WITH A MISSION",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "My First Story",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Maximum the Hormone",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "The Oral Cigarettes",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Coldrain",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Crossfaith",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "SiM",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Fear, and Loathing in Las Vegas",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Ling tosite sigure",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "tricot",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "toe",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Hitsujibungaku",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Cö shu Nie",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Polkadot Stingray",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Zutomayo",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Yorushika",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "indigo la End",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Gesunokiwamiotome",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Kroi",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Lucky Kilimanjaro",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Nulbarich",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Suchmos",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "WONK",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "SIRUP",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "TENDRE",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "D.A.N.",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Tempalay",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "cero",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Yogee New Waves",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "never young beach",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Kirinji",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Sakanaction",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Cornelius",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Yellow Magic Orchestra",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Ryuichi Sakamoto",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Haru Nemuri",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "KID FRESINO",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "STUTS",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "PUNPEE",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Creepy Nuts",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Awich",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "BAD HOP",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Tohji",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "kZm",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Daichi Yamamoto",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "BIM",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "VaVa",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "OZworld",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Watson",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "JP THE WAVY",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "SALU",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "AK-69",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "KOHH",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "KREVA",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "SEAMO",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "nobodyknows+",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "m-flo",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "TERIYAKI BOYZ",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Dragon Ash",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Rip Slyme",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "ORANGE RANGE",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "GReeeeN",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Aqua Timez",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Porno Graffitti",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "B'z",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Mr. Children",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "GLAY",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "L'Arc-en-Ciel",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "ZARD",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Every Little Thing",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Do As Infinity",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "SPEED",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "MAX",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "TRF",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "globe",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Dreams Come True",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Southern All Stars",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Tokyo Incidents",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Salyu",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "YUKI",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "JUDY AND MARY",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Chara",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "UA",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Mondo Grosso",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Monday Michiru",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Hikaru Utada",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Mariya Takeuchi",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Tatsuro Yamashita",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Anri",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Taeko Ohnuki",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Akina Nakamori",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Seiko Matsuda",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Junko Ohashi",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Hiroshi Sato",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Hiroshi Fujiwara",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Nujabes",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Uyama Hiroto",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "haruka nakamura",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Ichiko Aoba",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Mei Ehara",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Lamp",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Yura Yura Teikoku",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Fishmans",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Boris",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Mono",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Mass of the Fermenting Dregs",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Kinoko Teikoku",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "For Tracy Hyde",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Regal Lily",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Laura day romance",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Lucie,Too",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "Chilli Beans.",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Hump Back",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "yonige",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "SHISHAMO",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "Cody・Lee(李)",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "Dios",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "PEOPLE 1",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Tele",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "マカロニえんぴつ",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Aimyon",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Yuuri",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "Milet",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "TOMOO",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "city pop"
+      ]
+    },
+    {
+      "name": "iri",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Rei",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "SHE'S",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "electropop"
+      ]
+    },
+    {
+      "name": "KANA-BOON",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "synth pop"
+      ]
+    },
+    {
+      "name": "Frederic",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "KOTORI",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "alternative rock"
+      ]
+    },
+    {
+      "name": "DYGL",
+      "tags": [
+        "j-pop",
+        "japanese pop",
+        "folk pop"
+      ]
+    },
+    {
+      "name": "周杰伦",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "林俊杰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "陈奕迅",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "王菲",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "蔡依林",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "孙燕姿",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "梁静茹",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "S.H.E",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "五月天",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "陶喆",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "王力宏",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "张惠妹",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "莫文蔚",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "李玟",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "萧亚轩",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "罗志祥",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "潘玮柏",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "蔡健雅",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "田馥甄",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "杨丞琳",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "张韶涵",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "范玮琪",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "梁咏琪",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "容祖儿",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "Twins",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "陈慧琳",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "郑秀文",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "杨千嬅",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "古巨基",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "李克勤",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "林忆莲",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "张学友",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "刘德华",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "黎明",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "郭富城",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "谭咏麟",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "张国荣",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "梅艳芳",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Beyond",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "草蜢",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "达明一派",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "太极",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "Dear Jane",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "RubberBand",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Supper Moment",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "MIRROR",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "ERROR",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "COLLAR",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "姜涛",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "Anson Lo",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "Edan Lui",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Jer Lau",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "AK",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Ian Chan",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "MC Cheung",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "吕爵安",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "陈卓贤",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "柳应廷",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "李骏杰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "张敬轩",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "方大同",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "王菀之",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "林宥嘉",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "陈绮贞",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "苏打绿",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "魏如萱",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "徐佳莹",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "告五人",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "草东没有派对",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "落日飞车",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Deca Joins",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "伤心欲绝",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "康士坦的变化球",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "透明杂志",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "甜约翰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "傻子与白痴",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "老王乐队",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "椅子乐团",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "落差草原WWWW",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "珂拉琪",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "郑宜农",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "持修",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "裘德",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "魏如昀",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "蔡诗芸",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "9m88",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "ØZI",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "Leo王",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "蛋堡",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "MC HotDog",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "顽童MJ116",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Higher Brothers",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "马思唯",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "王以太",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "GAI",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "Bridge",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "艾热AIR",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "TizzyT",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "Capper",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Ty.",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "KnowKnow",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "A-Lin",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Lexie Liu",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "孟美岐",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "吴宣仪",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "王嘉尔",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "刘雨昕",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "张艺兴",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "鹿晗",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "黄子韬",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "吴亦凡",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "蔡徐坤",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "华晨宇",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "毛不易",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "薛之谦",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "李荣浩",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "邓紫棋",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "张碧晨",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "周深",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "汪苏泷",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "许嵩",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "薛凯琪",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "卫兰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "方皓玟",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "AGA",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "泳儿",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "JW",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "林奕匡",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "林家谦",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "陈蕾",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "炎明熹",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "云浩影",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "陈柏宇",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "胡鸿钧",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "许廷铿",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "侧田",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "卫诗",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "钟嘉欣",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "谢安琪",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "麦浚龙",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "周柏豪",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "方力申",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "邓丽欣",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "郑欣宜",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "何韵诗",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "卢凯彤",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "林一峰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "at17",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "my little airport",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "the pancakes",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Serrini",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "林海峰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "软硬天师",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "新裤子",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "痛仰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "万能青年旅店",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "五条人",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "海朋森",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "橘子海",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "康士坦",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "棱镜",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "盘尼西林",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "声音碎片",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "马赛克",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "霓虹花园",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "麻园诗人",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "旅行团",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "逃跑计划",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "刺猬",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "木马",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "后海大鲨鱼",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "重塑雕像的权利",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Carsick Cars",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "No Party For Cao Dong",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "Hedgehog",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "Omnipotent Youth Society",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "Elephant Gym",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "Sunset Rollercoaster",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "The Chairs",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "Your Woman Sleep",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "Melt",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "Feng Suave",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "郑中基",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "陈小春",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "古天乐",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "谢霆锋",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "任贤齐",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "苏永康",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "陈百强",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "罗文",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "甄妮",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "林子祥",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    },
+    {
+      "name": "叶倩文",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "mandopop"
+      ]
+    },
+    {
+      "name": "杜德伟",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "c-pop"
+      ]
+    },
+    {
+      "name": "庾澄庆",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "indie pop"
+      ]
+    },
+    {
+      "name": "张宇",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "rock"
+      ]
+    },
+    {
+      "name": "动力火车",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "r&b"
+      ]
+    },
+    {
+      "name": "信乐团",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "hip-hop"
+      ]
+    },
+    {
+      "name": "伍佰",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "cantopop"
+      ]
+    },
+    {
+      "name": "张震岳",
+      "tags": [
+        "mandopop",
+        "chinese-language pop",
+        "singer-songwriter"
+      ]
+    }
+  ],
+  "missing": []
+}

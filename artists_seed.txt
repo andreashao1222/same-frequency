@@ -1,1083 +1,600 @@
-# Add one artist per line. The builder resolves names to MusicBrainz MBIDs.
-Kendrick Lamar
-Tyler, The Creator
-Frank Ocean
-SZA
-Travis Scott
-Kanye West
-Nicki Minaj
-Cardi B
-Drake
-Future
-J. Cole
-A$AP Rocky
-Playboi Carti
-Childish Gambino
-Little Simz
-JPEGMAFIA
-MF DOOM
-Earl Sweatshirt
-Danny Brown
-Vince Staples
-Denzel Curry
-Megan Thee Stallion
-Doja Cat
-Megan Thee Stallion
-Lauryn Hill
-Missy Elliott
-OutKast
-A Tribe Called Quest
-Nas
-Jay-Z
-Beyoncé
-Rihanna
-Solange
-Kelela
-Sampha
-Blood Orange
-Steve Lacy
-Ravyn Lenae
-Tinashe
-The Weeknd
-FKA twigs
-Arca
-Björk
-Caroline Polachek
-Charli xcx
-Kate Bush
-St. Vincent
-Rina Sawayama
-Lady Gaga
-Lorde
-Billie Eilish
-Olivia Rodrigo
-Ariana Grande
-Dua Lipa
-Robyn
-Chappell Roan
-Sabrina Carpenter
-Troye Sivan
-Carly Rae Jepsen
-Mitski
-Phoebe Bridgers
-Clairo
-beabadoobee
-Laufey
-Faye Webster
-Ethel Cain
-Weyes Blood
-Adrianne Lenker
-Big Thief
-Alex G
-Soccer Mommy
-Japanese Breakfast
-Wednesday
-Snail Mail
-boygenius
-Lucy Dacus
-Julien Baker
-Waxahatchee
-Angel Olsen
-Courtney Barnett
-Sharon Van Etten
-Alvvays
-Men I Trust
-The Marías
-Cuco
-Mac DeMarco
-Tame Impala
-MGMT
-Unknown Mortal Orchestra
-Pond
-Temples
-Tame Impala
-Radiohead
-Portishead
-Massive Attack
-Cocteau Twins
-My Bloody Valentine
-Slowdive
-Beach House
-Mazzy Star
-Deftones
-Nine Inch Nails
-PJ Harvey
-Nirvana
-The Smashing Pumpkins
-Sonic Youth
-Yeah Yeah Yeahs
-The Strokes
-Arctic Monkeys
-The Cure
-Siouxsie and the Banshees
-Joy Division
-New Order
-Interpol
-Fontaines D.C.
-IDLES
-Wet Leg
-Black Country, New Road
-Black Midi
-Squid
-King Krule
-Yves Tumor
-Mk.gee
-Dean Blunt
-Tirzah
-Kali Uchis
-Rosalía
-Bad Bunny
-Karol G
-Rauw Alejandro
-Peso Pluma
-Feid
-J Balvin
-Shakira
-Anitta
-Caetano Veloso
-Milton Nascimento
-SOPHIE
-100 gecs
-A.G. Cook
-Dorian Electra
-SOPHIE
-Danny L Harle
-yeule
-underscores
-ericdoa
-brakence
-Bladee
-Ecco2k
-Yung Lean
-Charli xcx
-Oneohtrix Point Never
-Aphex Twin
-Boards of Canada
-Burial
-Four Tet
-Floating Points
-Jon Hopkins
-Tim Hecker
-William Basinski
-Brian Eno
-Nicolas Jaar
-Fever Ray
-FKA twigs
-Chelsea Wolfe
-Lingua Ignota
-Emma Ruth Rundle
-Have a Nice Life
-Grouper
-Mica Levi
-Ichiko Aoba
-Mitski
-Sufjan Stevens
-Bon Iver
-Elliott Smith
-Nick Drake
-Joni Mitchell
-Joan Baez
-Carole King
-Big Thief
-Fleet Foxes
-The National
-The War on Drugs
-Wilco
-Bright Eyes
-Conor Oberst
-Iron & Wine
-Father John Misty
-Angel Olsen
-Cat Power
-Regina Spektor
-Fiona Apple
-Tori Amos
-PJ Harvey
-Björk
-Kate Bush
-David Bowie
-Prince
-Marvin Gaye
-Stevie Wonder
-Aretha Franklin
-Nina Simone
-Erykah Badu
-D'Angelo
-Jill Scott
-Maxwell
-Mary J. Blige
-Janet Jackson
-Aaliyah
-Whitney Houston
-Mariah Carey
-Brandy
-TLC
-Destiny's Child
-Solange
-Frank Ocean
-The Internet
-Thundercat
-Anderson .Paak
-NxWorries
-Hiatus Kaiyote
-Jordan Rakei
-Tom Misch
-Lianne La Havas
-Arlo Parks
-RAYE
-Jorja Smith
-Mahalia
-Nao
-Koffee
-Little Dragon
-Khruangbin
-Men I Trust
-Mild High Club
-Crumb
-Still Woozy
-HOMESHAKE
-TOPS
-Sports
-Fazerdaze
-Cigarettes After Sex
-Daughter
-The xx
-Chromatics
-Desire
-Drab Majesty
-Molchat Doma
-Lebanon Hanover
-Boy Harsher
-TR/ST
-Cold Cave
-She Past Away
-Clan of Xymox
-Depeche Mode
-The Jesus and Mary Chain
-Ride
-Lush
-Chapterhouse
-Slowdive
-Catherine Wheel
-DIIV
-Nothing
-Whirr
-Narrow Head
-Hum
-Duster
-Codeine
-Low
-Mojave 3
-Spiritualized
-Sigur Rós
-Godspeed You! Black Emperor
-Mogwai
-Explosions in the Sky
-Swans
-Bauhaus
-Nick Cave & The Bad Seeds
-PJ Harvey
-Tom Waits
-Leonard Cohen
-Bob Dylan
-Neil Young
-The Velvet Underground
-Lou Reed
-Patti Smith
-Television
-Talking Heads
-Roxy Music
-New Order
-Siouxsie and the Banshees
-The Smiths
-The Stone Roses
-Primal Scream
-Blur
-Pulp
-Suede
-Oasis
-The Libertines
-Franz Ferdinand
-Bloc Party
-Yeah Yeah Yeahs
-LCD Soundsystem
-!!! 
-Hot Chip
-Cut Copy
-The Postal Service
-Death Cab for Cutie
-Modest Mouse
-Built to Spill
-Dinosaur Jr.
-Pixies
-Sleater-Kinney
-Hole
-Garbage
-Paramore
-My Chemical Romance
-Fall Out Boy
-Jimmy Eat World
-The Wonder Years
-American Football
-Mineral
-The Hotelier
-Modern Baseball
-Mom Jeans
-Turnover
-Citizen
-Title Fight
-Basement
-Balance and Composure
-Drug Church
-Touché Amoré
-La Dispute
-Thrice
-Brand New
-Bright Eyes
-Car Seat Headrest
-Black Country, New Road
-Squid
-Black Midi
-Model/Actriz
-Dry Cleaning
-Horsegirl
-Wednesday
-MJ Lenderman
-Bar Italia
-English Teacher
-Geese
-Protomartyr
-Preoccupations
-Shame
-Iceage
-DIIV
-Fontaines D.C.
-Viagra Boys
-Amyl and the Sniffers
-King Gizzard & the Lizard Wizard
-Queens of the Stone Age
-Foo Fighters
-Alice in Chains
-Soundgarden
-Pearl Jam
-Stone Temple Pilots
-Rage Against the Machine
-System of a Down
-Tool
-Mastodon
-Sleep
-Electric Wizard
-Kyuss
-Converge
-Turnstile
-Knocked Loose
-Spiritbox
-Bring Me the Horizon
-Linkin Park
-Evanescence
-Deftones
-Nine Inch Nails
-Marilyn Manson
-Ministry
-Skinny Puppy
-KMFDM
-The Prodigy
-Crystal Castles
-Grimes
-Purity Ring
-Magdalena Bay
-Allie X
-Caroline Rose
-Caroline Polachek
-Kero Kero Bonito
-Rina Sawayama
-Hikaru Utada
-Utada Hikaru
-Perfume
-Wednesday Campanella
-CHAI
-Atarashii Gakko!
-Mitsume
-Hitsujibungaku
-Lamp
-Fishmans
-Cornelius
-Yellow Magic Orchestra
-Ryuichi Sakamoto
-Kyu Sakamoto
-Ichiko Aoba
-Haru Nemuri
-Boris
-Melt-Banana
-Tricot
-Otoboke Beaver
-Babymetal
-Band-Maid
-One Ok Rock
-Radwimps
-Cö shu Nie
-King Gnu
-Fujii Kaze
-Aimer
-YOASOBI
-Ado
-NewJeans
+BTS
+BLACKPINK
+TWICE
+EXO
+SEVENTEEN
+NCT 127
+NCT DREAM
+NCT WISH
+NCT U
+Stray Kids
+ATEEZ
+TXT
+ENHYPEN
 LE SSERAFIM
 aespa
 IVE
-TWICE
-BLACKPINK
+NewJeans
+ITZY
 Red Velvet
-f(x)
 Girls' Generation
 SHINee
-BTS
-Stray Kids
-Seventeen
-NCT 127
-NCT Dream
+Super Junior
+TVXQ
+BIGBANG
+2NE1
+Wonder Girls
+KARA
+f(x)
+Apink
+GFRIEND
+MAMAMOO
+OH MY GIRL
+WJSN
 LOONA
-ARTMS
-Heejin
-Yves
-Chuu
-IU
-Sunmi
-Taemin
-Zico
-Dean
-Crush
-Jay Park
+STAYC
+KISS OF LIFE
+BABYMONSTER
+ILLIT
+RIIZE
+ZEROBASEONE
+BOYNEXTDOOR
+TWS
+THE BOYZ
+MONSTA X
+GOT7
+iKON
+WINNER
+TREASURE
+DAY6
+CNBLUE
+FTISLAND
+BTOB
+INFINITE
+VIXX
+B1A4
+Block B
+P1Harmony
+CIX
+CRAVITY
+EVNNE
+ONEUS
+ONEWE
+VERIVERY
+WEi
+AB6IX
+ASTRO
+SF9
+Pentagon
+ONF
+Golden Child
+MCND
+DKZ
+WEKIMEKI
+EVERGLOW
+fromis_9
+NMIXX
+Billlie
+Purple Kiss
+Dreamcatcher
+tripleS
+Kep1er
+CSR
+H1-KEY
+LIGHTSUM
+CLASS:y
+woo!ah!
+Rocket Punch
+Cherry Bullet
+Nature
+DreamNote
+Weki Meki
+Saturday
+Cignature
+Secret Number
+Lapillus
+Limelight
+Queenz Eye
+EL7Z UP
+UNIS
+Young Posse
+BADVILLAIN
+MEOVV
+KATSEYE
+XG
+KARD
+MOMOLAND
+CLC
+EXID
+AOA
+SISTAR
+4Minute
+Miss A
+After School
+T-ara
+Brown Eyed Girls
+Girl's Day
+Secret
+Rainbow
+Dal Shabet
+Nine Muses
+Hello Venus
+Jewelry
+BAP
+VICTON
+UP10TION
+TEEN TOP
+MBLAQ
+ZE:A
+U-KISS
+SS501
+2PM
+2AM
+BEAST
+Highlight
+Shinhwa
+H.O.T.
+g.o.d
+Sechs Kies
+Fin.K.L
+S.E.S.
+Baby V.O.X
+Koyote
+Turbo
 Epik High
-Balming Tiger
-Mid-Air Thief
-SE SO NEON
-HYUKOH
-Parannoul
-Asian Glow
-Otoboke Beaver
-Ichiko Aoba
-Stereolab
-Broadcast
-Mogwai
-The Avalanches
-Daft Punk
-Justice
-Air
-Phoenix
-M83
-Empire of the Sun
-Passion Pit
-MGMT
-Neon Indian
-Washed Out
-Toro y Moi
-Caribou
-Hot Chip
-Metronomy
-Disclosure
-Jamie xx
-The xx
-Mount Kimbie
-Burial
-James Blake
-Fred again..
-Overmono
-Aphex Twin
-Autechre
-Squarepusher
-Kraftwerk
-Can
-Neu!
-Tangerine Dream
-Cluster
-Silver Apples
-Suicide
-Throbbing Gristle
-Coil
-Cabaret Voltaire
-Daughters
-Death Grips
-clipping.
-Shabazz Palaces
-Danny Brown
-Injury Reserve
-Armand Hammer
-billy woods
-Ka
-MIKE
-Navy Blue
-Noname
-Rapsody
-Little Simz
-Sampa the Great
-Moor Mother
-Open Mike Eagle
-Aesop Rock
-Run the Jewels
-Killer Mike
-El-P
-Pusha T
-Clipse
-Vince Staples
-Schoolboy Q
-Isaiah Rashad
-Ab-Soul
-Joey Bada$$
-Mac Miller
-Kid Cudi
-Aminé
-Smino
-JID
-EarthGang
-Denzel Curry
-Ski Mask the Slump God
-Lil Uzi Vert
-Lil Wayne
-Nicki Minaj
-Megan Thee Stallion
-Doja Cat
-Latto
-Ice Spice
-Flo Milli
-Rico Nasty
-Tkay Maidza
-Shygirl
-COBRAH
-Slayyyter
-Kim Petras
-SOPHIE
-Arca
-Eartheater
-Sevdaliza
-Kelela
-Tinashe
-FKA twigs
-Yaeji
-Peggy Gou
-HAAi
-Kelly Lee Owens
-Jessie Ware
-Róisín Murphy
-Jessie Ware
-Kylie Minogue
-Madonna
-Cher
-Kate Bush
-Annie Lennox
-Enya
-Enigma
-Dead Can Dance
-This Mortal Coil
-Cocteau Twins
-The Sundays
-Lush
-Mazzy Star
-Hope Sandoval & the Warm Intentions
-Cranberries
-The Cardigans
-Saint Etienne
-Belle and Sebastian
-Camera Obscura
-The Magnetic Fields
-Yo La Tengo
-Guided by Voices
-Pavement
-Sonic Youth
-Dinosaur Jr.
-Sebadoh
-Pity Sex
-Hop Along
-Mannequin Pussy
-Snail Mail
-Soccer Mommy
-Momma
-The Beths
-Ratboys
-Indigo De Souza
-Gatlin
-Muna
-Chappell Roan
-Remi Wolf
-Fletcher
-Maggie Rogers
-Kacey Musgraves
-Maren Morris
-Brandi Carlile
-Kelsea Ballerini
-Taylor Swift
-Lana Del Rey
-Miley Cyrus
-Demi Lovato
-Selena Gomez
-Halsey
-Carly Rae Jepsen
-Cyndi Lauper
-Robyn
-Katy Perry
-Britney Spears
-Christina Aguilera
-Jennifer Lopez
-Nelly Furtado
-Gwen Stefani
-No Doubt
-Alanis Morissette
-Sheryl Crow
-Fergie
-Natasha Bedingfield
-Avril Lavigne
-Lorde
-Florence + the Machine
-Hozier
-Sam Fender
-Harry Styles
-The 1975
-Arctic Monkeys
-The Last Dinner Party
-Wolf Alice
-The Japanese House
-Men I Trust
-Clairo
-beabadoobee
-Laufey
-Faye Webster
-Mitski
-Ethel Cain
-Weyes Blood
-Adrianne Lenker
-Sufjan Stevens
-Bon Iver
-Elliott Smith
-Jeff Buckley
-Nick Drake
-Joni Mitchell
-Joan Baez
-Leonard Cohen
-Vashti Bunyan
-Karen Dalton
-Linda Perhacs
-Judee Sill
-Bert Jansch
-John Martyn
-Tim Buckley
-Townes Van Zandt
-Lucinda Williams
-Jason Molina
-Songs: Ohia
-Mount Eerie
-Phil Elverum
-Grouper
-Julie Byrne
-Jessica Pratt
-Haley Heynderickx
-Aldous Harding
-Big Thief
-Black Country, New Road
-black midi
-Squid
-Wednesday
-MJ Lenderman
-Waxahatchee
-Julia Jacklin
-Angel Olsen
-Sharon Van Etten
-Cate Le Bon
-Kurt Vile
-Courtney Barnett
-Steve Gunn
-Kevin Morby
-Jonathan Richman
-The Microphones
-Neutral Milk Hotel
-Of Montreal
-Animal Collective
-Panda Bear
-Ariel Pink
-Grizzly Bear
-Dirty Projectors
-Deerhunter
-Atlas Sound
-Deerhoof
-Battles
-Liars
-Gang Gang Dance
-Xiu Xiu
-Swans
-Boredoms
-Lightning Bolt
-Godspeed You! Black Emperor
-A Silver Mt. Zion
-Sigur Rós
-Múm
-Ólafur Arnalds
-Nils Frahm
-Max Richter
-Hildur Guðnadóttir
-Jóhann Jóhannsson
+Dynamicduo
+Zion.T
+DEAN
+Crush
+Heize
+Sunmi
+Taeyeon
+IU
+BoA
+HyunA
+Chungha
+Hwasa
+Wheein
+Solar
+Yerin Baek
+BIBI
+YENA
+JEON SOMI
+Kwon Eunbi
+Lee Hi
+AKMU
+ZICO
+Jay Park
+Loco
+Gray
+Simon Dominic
+pH-1
+Beenzino
+DPR IAN
+DPR LIVE
+WOODZ
+Colde
+Younha
+Nell
+The Rose
+LUCY
+Xdinary Heroes
+QWER
+ARTMS
+Loossemble
+Chuu
+Yves
+Heejin
+Taemin
+Key
+Onew
+Minho
+Kai
+D.O.
+Baekhyun
+Chen
+Suho
+Jungkook
+Jimin
+V
+RM
+Utada Hikaru
+Hamasaki Ayumi
+Namie Amuro
+Koda Kumi
+Mika Nakashima
+Sheena Ringo
+Tokyo Jihen
+Perfume
+Kyary Pamyu Pamyu
+AKB48
+SKE48
+NMB48
+HKT48
+NGT48
+STU48
+Morning Musume
+ANGERME
+Juice=Juice
+BEYOOOOONDS
+FRUITS ZIPPER
+Atarashii Gakko!
+Babymetal
+BiSH
+BiS
+Momoiro Clover Z
+Nogizaka46
+Sakurazaka46
+Hinatazaka46
+=LOVE
+≠ME
+CANDY TUNE
+iLiFE!
+f5ve
+FAKY
+Little Glee Monster
+SCANDAL
+Silent Siren
+Chai
+Band-Maid
+PassCode
+Necronomidol
+Dempagumi.inc
+Wednesday Campanella
+Chelmico
+Daoko
+Chanmina
+Aimer
+LiSA
+ReoNa
+YOASOBI
+Ado
+Vaundy
+Fujii Kaze
+Kenshi Yonezu
+King Gnu
+Mrs. GREEN APPLE
+Official HIGE DANDism
+back number
+Saucy Dog
+Novelbright
+sumika
+Sekai no Owari
+Alexandros
+BUMP OF CHICKEN
+RADWIMPS
+Asian Kung-Fu Generation
+ELLEGARDEN
+ONE OK ROCK
+UVERworld
+MAN WITH A MISSION
+My First Story
+Maximum the Hormone
+The Oral Cigarettes
+Coldrain
+Crossfaith
+SiM
+Fear, and Loathing in Las Vegas
+Ling tosite sigure
+tricot
+toe
+Hitsujibungaku
+Cö shu Nie
+Polkadot Stingray
+Zutomayo
+Yorushika
+indigo la End
+Gesunokiwamiotome
+Kroi
+Lucky Kilimanjaro
+Nulbarich
+Suchmos
+WONK
+SIRUP
+TENDRE
+D.A.N.
+Tempalay
+cero
+Yogee New Waves
+never young beach
+Kirinji
+Sakanaction
+Cornelius
+Yellow Magic Orchestra
 Ryuichi Sakamoto
-Hania Rani
-Fennesz
-Tim Hecker
-Grouper
-Stars of the Lid
-Bing & Ruth
-William Basinski
-Steve Roach
-Harold Budd
-Terry Riley
-Philip Glass
-Steve Reich
-Laurie Anderson
-Meredith Monk
-Diamanda Galás
-Lingua Ignota
-Anna von Hausswolff
-Cassandra Jenkins
-Nilufer Yanya
-Nilüfer Yanya
-Mk.gee
-Yves Tumor
-Model/Actriz
-Water From Your Eyes
-Crumb
-Mild High Club
-Unknown Mortal Orchestra
-Tame Impala
-Pond
-King Gizzard & the Lizard Wizard
-Temples
-GUM
-Jay Som
-Melody's Echo Chamber
-Crumb
-HOMESHAKE
-Still Woozy
-Cuco
-Rex Orange County
-Steve Lacy
-The Internet
-Thundercat
-Mac DeMarco
-Kali Uchis
-Ravyn Lenae
-Arlo Parks
-Jorja Smith
-Sampha
-Lianne La Havas
-Tom Misch
-Jordan Rakei
-Hiatus Kaiyote
-D'Angelo
-Erykah Badu
-Jill Scott
-Maxwell
-Aaliyah
-Brandy
-Sade
-Sade Adu
-SAULT
-Janelle Monáe
-Solange
-Anderson .Paak
-NxWorries
-Kaytranada
-FKJ
-Masego
-Yussef Dayes
-Ezra Collective
-Kokoroko
-Floating Points
-Robert Glasper
-Kamasi Washington
-Thundercat
-Esperanza Spalding
-Makaya McCraven
-BADBADNOTGOOD
-Nubya Garcia
-Shabaka Hutchings
-Sons of Kemet
-The Comet Is Coming
-Sun Ra
-Alice Coltrane
-Pharoah Sanders
-John Coltrane
-Miles Davis
-Charles Mingus
-Herbie Hancock
-Keith Jarrett
-Bill Evans
-Chet Baker
-Nina Simone
-Ella Fitzgerald
-Billie Holiday
-Sarah Vaughan
-Dinah Washington
-Aretha Franklin
-Marvin Gaye
-Stevie Wonder
-Curtis Mayfield
-Isaac Hayes
-Al Green
-Otis Redding
-Sam Cooke
-Dusty Springfield
-Nico
-The Velvet Underground
-Lou Reed
-Patti Smith
-David Bowie
-Iggy Pop
-T. Rex
-Roxy Music
-Brian Eno
-Talking Heads
-Television
-Wire
-Gang of Four
-Magazine
-Siouxsie and the Banshees
-Bauhaus
-Joy Division
-New Order
-The Cure
-The Smiths
-Echo & the Bunnymen
-The Jesus and Mary Chain
-Primal Scream
-My Bloody Valentine
-Slowdive
-Ride
-Lush
-Swervedriver
-Chapterhouse
-Catherine Wheel
-DIIV
-Nothing
-Whirr
-Hum
-Duster
-Low
-Codeine
-Red House Painters
-Bedhead
-Grouper
-Cigarettes After Sex
-Daughter
-The xx
-Chromatics
-Desire
-Drab Majesty
-Molchat Doma
-Lebanon Hanover
-Boy Harsher
-TR/ST
-Depeche Mode
-Killing Joke
-Fields of the Nephilim
-The Birthday Party
-Nick Cave & The Bad Seeds
-The National
-Interpol
-Editors
-Franz Ferdinand
-Bloc Party
-The Libertines
-The Strokes
-Yeah Yeah Yeahs
-LCD Soundsystem
-Hot Chip
-!!! 
-Cut Copy
-The Rapture
-Soulwax
-Simian Mobile Disco
-The Knife
-Fever Ray
-Little Dragon
-Lykke Li
-Robyn
-Róisín Murphy
-Moloko
-Goldfrapp
-Ladytron
-La Roux
-Chromatics
-Desire
-College
-Kavinsky
-Justice
-Daft Punk
-Air
-Phoenix
-M83
-The Avalanches
-Boards of Canada
-Four Tet
-Burial
-Floating Points
-Caribou
-Jamie xx
-James Blake
-Jon Hopkins
-Oneohtrix Point Never
-Autechre
-Aphex Twin
-Squarepusher
-Venetian Snares
-Plaid
-Clark
-Kelly Lee Owens
-Daniel Avery
-Daniel Lopatin
-Arca
-SOPHIE
-A.G. Cook
-Holly Herndon
-Holly Macve
-Eartheater
-Sevdaliza
-Fever Ray
-Yves Tumor
-Shygirl
-COBRAH
-Slayyyter
-Dorian Electra
-100 gecs
-Kero Kero Bonito
-Magdalena Bay
-yeule
-underscores
-brakence
-ericdoa
-Bladee
-Ecco2k
-Yung Lean
-Thaiboy Digital
-Black Kray
-Drain Gang
-Dean Blunt
-Babyfather
-Hype Williams
-Actress
-Burial
-Mount Kimbie
-The Caretaker
-William Basinski
-Oneohtrix Point Never
-Tim Hecker
-Grouper
-Biosphere
-Stars of the Lid
-Brian Eno
-Aphex Twin
-Boards of Canada
-Coil
-Throbbing Gristle
-Cabaret Voltaire
-Kraftwerk
-Can
-Neu!
-Faust
-Popol Vuh
-Tangerine Dream
-Cluster
-Ash Ra Tempel
-Suicide
-Silver Apples
-Velvet Underground
-The Doors
-The Beatles
-The Rolling Stones
-The Beach Boys
-The Kinks
-The Byrds
-The Zombies
-Simon & Garfunkel
-Fleetwood Mac
-Carole King
-Joni Mitchell
-Crosby, Stills, Nash & Young
-Neil Young
-Bob Dylan
-Joan Baez
-Leonard Cohen
-Nick Drake
-Elliott Smith
-Jeff Buckley
-Sufjan Stevens
-Bon Iver
-Fleet Foxes
-The Tallest Man on Earth
-Iron & Wine
-Father John Misty
-José González
-Devendra Banhart
-Vashti Bunyan
-Karen Dalton
-Judee Sill
-Linda Perhacs
-Bert Jansch
-John Martyn
-Tim Buckley
-Townes Van Zandt
-Lucinda Williams
-Jason Molina
-Mount Eerie
-Adrianne Lenker
-Big Thief
-Alex G
-Mitski
-Phoebe Bridgers
-Lucy Dacus
-Julien Baker
-boygenius
-Clairo
-beabadoobee
-Laufey
-Faye Webster
-Ethel Cain
-Weyes Blood
-Japanese Breakfast
-Soccer Mommy
-Snail Mail
-Waxahatchee
-Angel Olsen
-Sharon Van Etten
-Courtney Barnett
-Julia Jacklin
-Nilufer Yanya
-Cate Le Bon
-Kurt Vile
-Kevin Morby
-Steve Gunn
-Jonathan Richman
-The Magnetic Fields
-Belle and Sebastian
-Camera Obscura
-The Sundays
-Cocteau Twins
-Mazzy Star
-Beach House
-Men I Trust
-The Marías
-TOPS
-Fazerdaze
-Crumb
-Mild High Club
-Still Woozy
-HOMESHAKE
-Rex Orange County
-Cuco
-Toro y Moi
-Washed Out
-Neon Indian
-Youth Lagoon
-DIIV
-Wild Nothing
-Real Estate
-Mac DeMarco
-Tame Impala
-MGMT
-Pond
-Unknown Mortal Orchestra
-King Gizzard & the Lizard Wizard
+Haru Nemuri
+KID FRESINO
+STUTS
+PUNPEE
+Creepy Nuts
+Awich
+BAD HOP
+Tohji
+kZm
+Daichi Yamamoto
+BIM
+VaVa
+OZworld
+Watson
+JP THE WAVY
+SALU
+AK-69
+KOHH
+KREVA
+SEAMO
+nobodyknows+
+m-flo
+TERIYAKI BOYZ
+Dragon Ash
+Rip Slyme
+ORANGE RANGE
+GReeeeN
+Aqua Timez
+Porno Graffitti
+B'z
+Mr. Children
+GLAY
+L'Arc-en-Ciel
+ZARD
+Every Little Thing
+Do As Infinity
+SPEED
+MAX
+TRF
+globe
+Dreams Come True
+Southern All Stars
+Tokyo Incidents
+Salyu
+YUKI
+JUDY AND MARY
+Chara
+UA
+Mondo Grosso
+Monday Michiru
+Hikaru Utada
+Mariya Takeuchi
+Tatsuro Yamashita
+Anri
+Taeko Ohnuki
+Akina Nakamori
+Seiko Matsuda
+Junko Ohashi
+Hiroshi Sato
+Hiroshi Fujiwara
+Nujabes
+Uyama Hiroto
+haruka nakamura
+Ichiko Aoba
+Mei Ehara
+Lamp
+Yura Yura Teikoku
+Fishmans
+Boris
+Mono
+Mass of the Fermenting Dregs
+Kinoko Teikoku
+For Tracy Hyde
+Regal Lily
+Laura day romance
+Lucie,Too
+Chilli Beans.
+Hump Back
+yonige
+SHISHAMO
+Cody・Lee(李)
+Dios
+PEOPLE 1
+Tele
+マカロニえんぴつ
+Aimyon
+Yuuri
+Milet
+TOMOO
+iri
+Rei
+SHE'S
+KANA-BOON
+Frederic
+KOTORI
+DYGL
+周杰伦
+林俊杰
+陈奕迅
+王菲
+蔡依林
+孙燕姿
+梁静茹
+S.H.E
+五月天
+陶喆
+王力宏
+张惠妹
+莫文蔚
+李玟
+萧亚轩
+罗志祥
+潘玮柏
+蔡健雅
+田馥甄
+杨丞琳
+张韶涵
+范玮琪
+梁咏琪
+容祖儿
+Twins
+陈慧琳
+郑秀文
+杨千嬅
+古巨基
+李克勤
+林忆莲
+张学友
+刘德华
+黎明
+郭富城
+谭咏麟
+张国荣
+梅艳芳
+Beyond
+草蜢
+达明一派
+太极
+Dear Jane
+RubberBand
+Supper Moment
+MIRROR
+ERROR
+COLLAR
+姜涛
+Anson Lo
+Edan Lui
+Jer Lau
+AK
+Ian Chan
+MC Cheung
+吕爵安
+陈卓贤
+柳应廷
+李骏杰
+张敬轩
+方大同
+王菀之
+林宥嘉
+陈绮贞
+苏打绿
+魏如萱
+徐佳莹
+告五人
+草东没有派对
+落日飞车
+Deca Joins
+伤心欲绝
+康士坦的变化球
+透明杂志
+甜约翰
+傻子与白痴
+老王乐队
+椅子乐团
+落差草原WWWW
+珂拉琪
+郑宜农
+持修
+裘德
+魏如昀
+蔡诗芸
+9m88
+ØZI
+Leo王
+蛋堡
+MC HotDog
+顽童MJ116
+Higher Brothers
+马思唯
+王以太
+GAI
+Bridge
+艾热AIR
+TizzyT
+Capper
+Ty.
+KnowKnow
+A-Lin
+Lexie Liu
+孟美岐
+吴宣仪
+王嘉尔
+刘雨昕
+张艺兴
+鹿晗
+黄子韬
+吴亦凡
+蔡徐坤
+华晨宇
+毛不易
+薛之谦
+李荣浩
+邓紫棋
+张碧晨
+周深
+汪苏泷
+许嵩
+薛凯琪
+卫兰
+方皓玟
+AGA
+泳儿
+JW
+林奕匡
+林家谦
+陈蕾
+炎明熹
+云浩影
+陈柏宇
+胡鸿钧
+许廷铿
+侧田
+卫诗
+钟嘉欣
+谢安琪
+麦浚龙
+周柏豪
+方力申
+邓丽欣
+郑欣宜
+何韵诗
+卢凯彤
+林一峰
+at17
+my little airport
+the pancakes
+Serrini
+林海峰
+软硬天师
+新裤子
+痛仰
+万能青年旅店
+五条人
+海朋森
+橘子海
+康士坦
+棱镜
+盘尼西林
+声音碎片
+马赛克
+霓虹花园
+麻园诗人
+旅行团
+逃跑计划
+刺猬
+木马
+后海大鲨鱼
+重塑雕像的权利
+Carsick Cars
+No Party For Cao Dong
+Hedgehog
+Omnipotent Youth Society
+Elephant Gym
+Sunset Rollercoaster
+The Chairs
+Your Woman Sleep
+Melt
+Feng Suave
+郑中基
+陈小春
+古天乐
+谢霆锋
+任贤齐
+苏永康
+陈百强
+罗文
+甄妮
+林子祥
+叶倩文
+杜德伟
+庾澄庆
+张宇
+动力火车
+信乐团
+伍佰
+张震岳

@@ -46,7 +46,7 @@ const genreRules: Array<[RegExp, string[]]> = [
   [/electronic|electronica|techno|house|dance|disco/, ["electronic","dance","euphoric"]], [/jazz|nu jazz/, ["jazz pop","jazz","soft vocals"]],
   [/metal|doom|black metal|heavy metal/, ["metal","dark","heavy"]], [/punk|hardcore/, ["punk","guitar-driven","high energy"]],
   [/country|americana|alt-country/, ["americana","country","storytelling"]], [/goth|gothic|darkwave/, ["gothic","dark","atmospheric"]],
-  [/classical|chamber|neoclassical/, ["classical","minimalist","orchestral"]], [/ambient|drone/, ["ambient","atmospheric","minimalist"]], [/trip hop|trip-hop/, ["trip-hop","downtempo","atmospheric"]], [/funk|funky/, ["funk","groove","rhythm-driven"]], [/afrobeats|afrobeat/, ["afrobeat","groove","rhythm-driven"]], [/reggaeton|latin trap/, ["latin","rhythm-driven","dance"]], [/emo|midwest emo/, ["emo","guitar-driven","intimate"]], [/slowcore/, ["slowcore","minimalist","atmospheric"]], [/noise rock/, ["noise rock","experimental rock","abrasive"]], [/art rock/, ["art rock","experimental rock","guitar-driven"]], [/alt-country/, ["alt-country","americana","storytelling"]], [/alternative/, ["alternative"]], [/pop/, ["pop"]]
+  [/classical|chamber|neoclassical/, ["classical","minimalist","orchestral"]], [/ambient|drone/, ["ambient","atmospheric","minimalist"]], [/trip hop|trip-hop/, ["trip-hop","downtempo","atmospheric"]], [/funk|funky/, ["funk","groove","rhythm-driven"]], [/afrobeats|afrobeat/, ["afrobeat","groove","rhythm-driven"]], [/reggaeton|latin trap/, ["latin","rhythm-driven","dance"]], [/k-pop|kpop|korean pop|korean idol|idol pop/, ["k-pop","korean pop","idol pop","dance-pop"]], [/j-pop|jpop|japanese pop|japanese idol/, ["j-pop","japanese pop","city pop","electropop"]], [/mandopop|c-pop|chinese pop|chinese-language pop|mandarin pop/, ["mandopop","c-pop","chinese pop","singer-songwriter"]], [/cantopop|cantonese pop/, ["cantopop","c-pop","chinese pop","singer-songwriter"]], [/emo|midwest emo/, ["emo","guitar-driven","intimate"]], [/slowcore/, ["slowcore","minimalist","atmospheric"]], [/noise rock/, ["noise rock","experimental rock","abrasive"]], [/art rock/, ["art rock","experimental rock","guitar-driven"]], [/alt-country/, ["alt-country","americana","storytelling"]], [/alternative/, ["alternative"]], [/pop/, ["pop"]]
 ];
 
 export function genreTags(genres: string[]): string[] {
@@ -112,6 +112,30 @@ const portraitVariants:Record<string,string[]>={
     "you like melodies that emerge from the fog rather than sit cleanly on top of it",
     "you seem to hear texture as part of the emotion, not just decoration",
     "you enjoy music that rewards getting lost inside the mix"
+  ],
+  "k-pop":[
+    "you like pop when every detail feels intentional — the hook, the styling, the performance, the tiny production flourish",
+    "you enjoy spectacle, but only when there is enough personality underneath the polish to make it feel personal",
+    "you seem to have a high tolerance for maximalism as long as the song knows exactly where its emotional payoff is",
+    "you like music that can be both meticulously constructed and immediately fun"
+  ],
+  "j-pop":[
+    "you like hooks with a little eccentricity hiding inside them",
+    "you seem drawn to pop that treats genre as a suggestion rather than a rule",
+    "you enjoy sweetness most when there is a strange chord, texture or arrangement waiting underneath",
+    "you want melodies that are instantly memorable but still have somewhere unexpected to go"
+  ],
+  "mandopop":[
+    "you seem to attach music to places, people and very specific moments in time",
+    "you care about melody, but the voice and the words are what make a song stay with you",
+    "you like polished pop when it still feels emotionally lived-in",
+    "you seem drawn to songs that carry a strong sense of place as well as a strong chorus"
+  ],
+  "cantopop":[
+    "you like melody with history in it — polished enough to sing along to, specific enough to feel personal",
+    "you seem drawn to songs where vocal character matters as much as production",
+    "you enjoy pop that carries a sense of place, memory and language",
+    "you like a great chorus, but you also notice the little details around it"
   ]
 };
 
@@ -153,6 +177,30 @@ const redFlagVariants:Record<string,string[]>={
     "If the vocals disappear into the mix, you may consider that a feature.",
     "You will call a song beautiful even when you can barely tell where one instrument ends.",
     "You are unusually willing to let a six-minute intro happen if the texture is right."
+  ],
+  "k-pop":[
+    "You have absolutely judged a comeback by the teaser photos before hearing the song.",
+    "You can forgive an aggressively long bridge if the final chorus earns it.",
+    "You know at least one choreography point well enough to demonstrate it against your better judgment.",
+    "You have opinions about album packaging that are suspiciously close to opinions about graphic design."
+  ],
+  "j-pop":[
+    "A bizarre chord change can buy a song another three weeks of your attention.",
+    "You will call something catchy and then immediately explain why it is actually much stranger than that.",
+    "You have probably fallen down a Japanese music rabbit hole because of one oddly specific recommendation.",
+    "You are unusually willing to forgive a song for being completely impossible to categorize."
+  ],
+  "mandopop":[
+    "One devastating lyric can make you forgive an otherwise questionable production choice.",
+    "You have attached a song to a specific school year and will never hear it normally again.",
+    "You can turn a perfectly ordinary commute into a full nostalgic montage.",
+    "You will insist a song is about a very specific person even when nobody asked."
+  ],
+  "cantopop":[
+    "You have at least one song that instantly transports you to a very specific year.",
+    "You will forgive a dated synth sound if the chorus is good enough.",
+    "You care about vocal phrasing more than you pretend to.",
+    "You can identify an era from the first ten seconds and will absolutely announce it."
   ]
 };
 
@@ -174,7 +222,33 @@ function buildTaste(artists:string[],tags:string[]):TasteProfile{
     `There is a ${tags.slice(0,3).join(", ")} thread running through your five artists. You seem less interested in fitting a genre box than in finding music with a distinct atmosphere and identity.`,
     `Your five picks cluster around ${tags.slice(0,3).join(", ")}, but the interesting part is the combination: you seem to chase a particular feeling more than a particular genre.`
   ];
-  const description=descriptionVariants[hash%descriptionVariants.length];
+  const genreDescriptionVariants:Record<string,string[]>={
+    "k-pop":[
+      `Your five picks point toward K-pop, but the interesting part is how much you seem to value precision, performance and hooks that know how to land.`,
+      `There is a K-pop thread running through your taste: polished surfaces, strong identities, and enough production detail to reward repeat listens.`,
+      `Your taste treats pop as a complete visual and sonic world. You seem to want the song, the personality and the presentation to all agree.`,
+      `K-pop is the clearest signal here, but what really stands out is your appetite for intentional detail and immediate payoff.`
+    ],
+    "j-pop":[
+      `Your picks lean J-pop, with a taste for melody that stays catchy while leaving room for eccentric textures and left turns.`,
+      `There is a Japanese-pop sensibility in your five: strong hooks, unusual arrangements and a willingness to let genres blur into one another.`,
+      `Your taste seems to like pop that is instantly memorable but never completely predictable.`,
+      `J-pop is the clearest thread, but the bigger pattern is your love of detail — the tiny strange choice that makes a familiar song feel new.`
+    ],
+    "mandopop":[
+      `Your picks lean Chinese-language pop, where melody, voice, lyrics and memory seem to matter almost equally.`,
+      `There is a strong Mandarin-pop thread here: emotionally direct songwriting, memorable melodies and songs that feel attached to particular moments.`,
+      `Your taste seems to care about the emotional afterlife of a song — not just whether it sounds good, but what memory it leaves behind.`,
+      `Chinese-language pop is the clearest signal, but what stands out is your preference for melody with a very human sense of place.`
+    ],
+    "cantopop":[
+      `Your picks carry a Cantopop sensibility: strong melodies, distinctive voices and a very specific relationship between music and memory.`,
+      `There is a Hong Kong pop thread running through your taste, with an ear for vocal character, memorable choruses and songs that feel tied to an era.`,
+      `Your taste seems especially sensitive to phrasing and atmosphere — the little details that make a familiar pop song feel personal.`,
+      `Cantopop is the clearest thread, but the deeper pattern is your attachment to melody, voice and cultural memory.`
+    ]
+  };
+  const description = genreDescriptionVariants[lead]?.[hash%genreDescriptionVariants[lead].length] ?? descriptionVariants[hash%descriptionVariants.length];
   return {tags,description,portrait,redFlag,color:scenery[hash%scenery.length],weather:weather[hash%weather.length],place:places[hash%places.length],season:seasons[hash%seasons.length],feeling:`${lead} with a little ${second}`};
 }
 
@@ -231,7 +305,8 @@ const profiles = (culturalDatabase as any).profiles ?? [];
 const curated = profiles.flatMap((p:any)=>[
   ...(p.movies??[]).map((title:string)=>({type:"movie",title,meta:"movie · cultural match",tags:p.tags??[],reason:p.read})),
   ...(p.books??[]).map((title:string)=>({type:"book",title,meta:"book · cultural match",tags:p.tags??[],reason:p.read})),
-  ...(p.artists??[]).map((title:string)=>({type:"artist",title,meta:"artist · cultural match",tags:p.tags??[],reason:p.read,url:`https://open.spotify.com/search/${encodeURIComponent(title)}`}))
+  ...(p.artists??[]).map((title:string)=>({type:"artist",title,meta:"artist · cultural match",tags:p.tags??[],reason:(p.readVariants?.[0] ?? p.read),url:`https://open.spotify.com/search/${encodeURIComponent(title)}`})),
+  ...(p.albums??[]).map((title:string)=>({type:"album",title,meta:"album · cultural match",tags:p.tags??[],reason:(p.readVariants?.[0] ?? p.read),url:`https://open.spotify.com/search/${encodeURIComponent(title)}`}))
 ]) as Array<CulturalMatch & {tags:string[]}>;
 
 function score(tags:string[], candidateTags:string[]){
