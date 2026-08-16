@@ -7,14 +7,11 @@ import { ArrowLeft, Check, Plus, X } from "lucide-react";
 
 type Artist = { id: string; name: string; spotifyUrl: string };
 
-const PLATFORMS = ["Spotify", "Apple Music", "SoundCloud", "YouTube Music", "NetEase Cloud Music", "QQ Music", "Other"];
-
 export default function JoinPage() {
   const router = useRouter();
   const [artists, setArtists] = useState<Artist[]>([]);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Artist[]>([]);
-  const [musicPlatform, setMusicPlatform] = useState("Spotify");
   const [musicProfileUrl, setMusicProfileUrl] = useState("");
   const [error, setError] = useState("");
   const [searching, setSearching] = useState(false);
@@ -55,9 +52,6 @@ export default function JoinPage() {
       try {
         const parsed = new URL(profileUrl);
         if (parsed.protocol !== "https:") throw new Error();
-        if (musicPlatform === "Spotify" && !/^https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[A-Z]{2})?\/)?(?:user|profile)\//i.test(profileUrl)) {
-          return setError("Paste a valid Spotify profile link.");
-        }
       } catch {
         return setError("Paste a valid https profile link.");
       }
@@ -68,7 +62,7 @@ export default function JoinPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         artists: artists.map(a => a.name),
-        musicPlatform: profileUrl ? musicPlatform : null,
+        musicPlatform: null,
         musicProfileUrl: profileUrl || null,
       })
     });
@@ -77,7 +71,6 @@ export default function JoinPage() {
 
     localStorage.setItem("sf_profile_id", data.profile.id);
     localStorage.setItem("sf_artists", JSON.stringify(artists.map(a => a.name)));
-    localStorage.setItem("sf_music_platform", data.profile.music_platform || "");
     localStorage.setItem("sf_music_profile_url", data.profile.music_profile_url || "");
     router.push(`/matches?id=${data.profile.id}`);
   };
@@ -132,16 +125,13 @@ export default function JoinPage() {
 
           <section>
             <label className="text-sm font-bold">your music profile <span className="font-normal text-neutral-400">(optional)</span></label>
-            <p className="mt-1 text-sm text-neutral-500">Use whichever music service you actually use. This is optional and will only be shown as a profile link to other participants.</p>
-            <div className="mt-5 grid gap-3 md:grid-cols-[220px_1fr]">
-              <select value={musicPlatform} onChange={e => setMusicPlatform(e.target.value)} className="border-b-2 border-black bg-transparent py-4 text-lg outline-none">
-                {PLATFORMS.map(platform => <option key={platform}>{platform}</option>)}
-              </select>
+            <p className="mt-1 text-sm text-neutral-500">Paste a profile link from whatever music service you use. Leave it blank if you prefer.</p>
+            <div className="mt-5">
               <input
                 value={musicProfileUrl}
                 onChange={e => setMusicProfileUrl(e.target.value)}
-                placeholder="https://... (optional)"
-                className="border-b-2 border-black bg-transparent py-4 text-lg outline-none placeholder:text-neutral-400 focus:bg-white"
+                placeholder="paste your music profile link..."
+                className="w-full border-b-2 border-black bg-transparent py-4 text-lg outline-none placeholder:text-neutral-400 focus:bg-white"
               />
             </div>
           </section>

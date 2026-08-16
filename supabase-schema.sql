@@ -40,8 +40,7 @@ with check (
   and jsonb_array_length(taste_tags) >= 1
   and (
     music_profile_url is null
-    or music_platform <> 'Spotify'
-    or music_profile_url like 'https://open.spotify.com/%'
+    or music_profile_url like 'https://%'
   )
 );
 

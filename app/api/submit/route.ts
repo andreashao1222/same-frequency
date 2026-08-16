@@ -27,11 +27,11 @@ export async function POST(req: Request) {
     }
 
     if (musicProfileUrl) {
-      let parsed: URL;
-      try { parsed = new URL(musicProfileUrl); } catch { return NextResponse.json({ error: "Please paste a valid https profile link." }, { status: 400 }); }
-      if (parsed.protocol !== "https:") return NextResponse.json({ error: "Please paste a valid https profile link." }, { status: 400 });
-      if (musicPlatform === "Spotify" && !/^https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[A-Z]{2})?\/)?(?:user|profile)\//i.test(musicProfileUrl)) {
-        return NextResponse.json({ error: "Please paste a valid Spotify profile link." }, { status: 400 });
+      try {
+        const parsed = new URL(musicProfileUrl);
+        if (parsed.protocol !== "https:") throw new Error();
+      } catch {
+        return NextResponse.json({ error: "Please paste a valid https profile link." }, { status: 400 });
       }
     }
 
@@ -51,9 +51,9 @@ export async function POST(req: Request) {
     const { data, error } = await db.from("profiles").insert({
       alias: makeAlias(),
       artists,
-      music_platform: musicPlatform,
+      music_platform: null,
       music_profile_url: musicProfileUrl,
-      spotify_url: musicPlatform === "Spotify" ? musicProfileUrl : null,
+      spotify_url: null,
       taste_tags: taste.tags
     }).select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, created_at").single();
 
