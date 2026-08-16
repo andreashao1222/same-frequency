@@ -19,23 +19,25 @@ export async function POST(req: Request) {
     const artists = Array.isArray(body.artists)
       ? body.artists.map((x: unknown) => String(x).trim()).filter(Boolean).slice(0, 5)
       : [];
-    const spotifyUrl = String(body.spotifyUrl ?? "").trim();
+    const spotifyUrl = String(body.spotifyUrl ?? "").trim() || null;
 
     if (artists.length !== 5) {
       return NextResponse.json({ error: "Choose exactly 5 artists." }, { status: 400 });
     }
-    if (!/^https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[A-Z]{2})?\/)?(?:user|profile)\//i.test(spotifyUrl)) {
-      return NextResponse.json({ error: "Please paste a Spotify profile link." }, { status: 400 });
+    if (spotifyUrl && !/^https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[A-Z]{2})?\/)?(?:user|profile)\//i.test(spotifyUrl)) {
+      return NextResponse.json({ error: "Please paste a valid Spotify profile link." }, { status: 400 });
     }
 
     const taste = getTasteProfile(artists);
     const db = client();
 
-    const { data: existing } = await db
-      .from("profiles")
-      .select("id, alias, artists, spotify_url, taste_tags, created_at")
-      .eq("spotify_url", spotifyUrl)
-      .maybeSingle();
+    const { data: existing } = spotifyUrl
+      ? await db
+          .from("profiles")
+          .select("id, alias, artists, spotify_url, taste_tags, created_at")
+          .eq("spotify_url", spotifyUrl)
+          .maybeSingle()
+      : { data: null };
 
     if (existing) {
       return NextResponse.json({ profile: existing, existing: true });

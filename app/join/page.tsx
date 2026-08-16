@@ -41,7 +41,7 @@ export default function JoinPage() {
     e.preventDefault();
     setError("");
     if (artists.length !== 5) return setError("Choose exactly 5 artists.");
-    if (!/^https:\/\/open\.spotify\.com\/(user|profile)\//i.test(spotify.trim())) {
+    if (spotify.trim() && !/^https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[A-Z]{2})?\/)?(?:user|profile)\//i.test(spotify.trim())) {
       return setError("Paste a valid Spotify profile link.");
     }
 
@@ -108,12 +108,12 @@ export default function JoinPage() {
           </section>
 
           <section>
-            <label className="text-sm font-bold">your Spotify profile</label>
-            <p className="mt-1 text-sm text-neutral-500">Your profile link is displayed on your match card so another listener can open it.</p>
+            <label className="text-sm font-bold">your Spotify profile <span className="font-normal text-neutral-400">(optional)</span></label>
+            <p className="mt-1 text-sm text-neutral-500">Optional. Add it if you want friends to be able to find you on Spotify — you do not need Spotify to use the experiment.</p>
             <input
               value={spotify}
               onChange={e => setSpotify(e.target.value)}
-              placeholder="https://open.spotify.com/user/..."
+              placeholder="https://open.spotify.com/user/... (optional)"
               className="mt-5 w-full border-b-2 border-black bg-transparent py-4 text-lg outline-none placeholder:text-neutral-400 focus:bg-white"
             />
           </section>
@@ -125,7 +125,7 @@ export default function JoinPage() {
           </button>
 
           <p className="text-center text-xs text-neutral-500">
-            By joining, you agree that your selected artists and Spotify profile link can be displayed to other members.
+            By joining, you agree that your selected artists and optional Spotify profile link can be displayed to other members.
           </p>
         </form>
       </div>

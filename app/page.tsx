@@ -15,16 +15,16 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <p className="mb-7 text-xs font-bold uppercase tracking-[.25em]">a tiny social experiment in music taste</p>
           <h1 className="display max-w-5xl text-7xl leading-[.82] md:text-[10rem]">
-            Find people<br />
-            on your <span className="italic">frequency.</span>
+            Tell us what you're<br />
+            listening <span className="italic">to.</span>
           </h1>
 
           <div className="mt-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <p className="max-w-md text-lg leading-7 text-neutral-600">
-              Pick five artists you love. Add your Spotify profile. We’ll show you people whose taste gets suspiciously close to yours.
+              Pick five artists you love. We’ll turn your taste into a tiny cultural profile — music, movies, books, vibes, and one thing you will probably hate.
             </p>
             <Link href="/join" className="group inline-flex w-fit items-center gap-3 bg-black px-7 py-4 text-lg font-bold text-white transition hover:translate-x-1">
-              Find my matches
+              Find my frequency
               <ArrowUpRight className="transition group-hover:rotate-45" />
             </Link>
           </div>
@@ -39,8 +39,8 @@ export default function Home() {
 
       <section className="mx-auto grid max-w-7xl gap-5 px-6 py-16 md:grid-cols-3">
         <Feature icon={<Headphones />} number="01" title="Pick five" text="Your five favorite artists are the only profile you need." />
-        <Feature icon={<Sparkles />} number="02" title="Get matched" text="Compare your taste with people already in the pool." />
-        <Feature icon={<Users />} number="03" title="Say hi" text="Open their Spotify profile and decide whether to connect." />
+        <Feature icon={<Sparkles />} number="02" title="Get matched" text="Get a playful read on what your taste says about you." />
+        <Feature icon={<Users />} number="03" title="Share it" text="Turn your frequency into a screenshot-worthy cultural identity." />
       </section>
 
       <footer className="border-t border-black px-6 py-8 text-sm text-neutral-500">

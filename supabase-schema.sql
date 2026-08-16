@@ -1,12 +1,14 @@
-
 create table if not exists public.profiles (
   id uuid primary key default gen_random_uuid(),
   alias text not null unique,
   artists jsonb not null,
-  spotify_url text not null unique,
+  spotify_url text unique,
   taste_tags jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now()
 );
+
+-- Existing projects: let non-Spotify listeners join too.
+alter table public.profiles alter column spotify_url drop not null;
 
 alter table public.profiles enable row level security;
 
@@ -23,7 +25,7 @@ to anon, authenticated
 with check (
   jsonb_array_length(artists) = 5
   and jsonb_array_length(taste_tags) >= 1
-  and spotify_url like 'https://open.spotify.com/%'
+  and (spotify_url is null or spotify_url like 'https://open.spotify.com/%')
 );
 
 grant select, insert on public.profiles to anon, authenticated;
