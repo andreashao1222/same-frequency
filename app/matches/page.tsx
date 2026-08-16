@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Share2, Sparkles } from "lucide-react";
-import { getTasteProfile, getCulturalMatches, getMusicalOpposite } from "@/lib/taste";
+import { getTasteProfileFromTags, getCulturalMatches, getMusicalOpposite } from "@/lib/taste";
 
 type Profile = {
   id: string;
@@ -71,18 +72,19 @@ async function posterBlob(profile: Profile, taste: ReturnType<typeof getTastePro
   return new Promise<Blob>((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("poster export failed")), "image/png"));
 }
 
-export default function MatchesPage() {
+function MatchesContent() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [matches, setMatches] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
   const [matchesLoading, setMatchesLoading] = useState(false);
   const [shareLabel, setShareLabel] = useState("share my poster");
   const ownIdRef = useRef<string | null>(null);
+  const searchParams = useSearchParams();
+  const requestedId = searchParams.get("id");
 
   useEffect(() => {
     const load = async () => {
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id") || localStorage.getItem("sf_profile_id");
+      const id = requestedId || localStorage.getItem("sf_profile_id");
       const ownId = localStorage.getItem("sf_profile_id");
       ownIdRef.current = ownId;
       if (!id) { setLoading(false); return; }
@@ -113,17 +115,20 @@ export default function MatchesPage() {
         }
       }
     };
+    setProfile(null);
+    setLoading(true);
+    setMatches([]);
     load();
-  }, []);
+  }, [requestedId]);
 
   if (!profile && !loading) {
     return <main className="min-h-screen grid place-items-center noise p-6"><div className="text-center"><h1 className="display text-5xl">No taste profile yet.</h1><Link href="/join" className="mt-6 inline-block bg-black px-6 py-3 font-bold text-white">Make one →</Link></div></main>;
   }
   if (!profile) return <main className="min-h-screen grid place-items-center noise">Loading…</main>;
 
-  const taste = getTasteProfile(profile.artists);
-  const cultural = getCulturalMatches(profile.artists);
-  const opposite = getMusicalOpposite(profile.artists);
+  const taste = getTasteProfileFromTags(profile.artists, profile.taste_tags);
+  const cultural = getCulturalMatches(profile.artists, profile.taste_tags);
+  const opposite = getMusicalOpposite(profile.artists, profile.taste_tags);
   const isOwnReport = profile.id === ownIdRef.current;
 
   const share = async () => {
@@ -188,5 +193,7 @@ export default function MatchesPage() {
     </main>
   );
 }
+
+export default function MatchesPage() { return <Suspense fallback={<main className="min-h-screen grid place-items-center noise">Loading…</main>}><MatchesContent /></Suspense>; }
 
 function Vibe({ label, value }: { label: string; value: string }) { return <div className="border border-black bg-white/35 p-5"><p className="text-[10px] font-black uppercase tracking-[.18em] text-neutral-500">{label}</p><p className="mt-8 font-black leading-6">{value}</p></div>; }

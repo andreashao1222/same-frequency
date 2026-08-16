@@ -10,10 +10,8 @@ export type TasteProfile = {
   feeling: string;
 };
 
-type ArtistStyle = {
-  tags: string[];
-  discovery?: number;
-};
+type ArtistStyle = { tags: string[] };
+type GenreHints = string[][];
 
 const styles: Record<string, ArtistStyle> = {
   "clairo": { tags: ["bedroom pop", "indie pop", "dream pop", "soft vocals"] },
@@ -36,10 +34,45 @@ const styles: Record<string, ArtistStyle> = {
   "lana del rey": { tags: ["alternative pop", "dreamy", "dark", "nostalgic"] },
 };
 
-const fallback = ["indie", "alternative"];
+const genreMap: Array<[RegExp, string[]]> = [
+  [/shoegaze|dream pop|dream-pop/, ["shoegaze", "dream pop", "atmospheric"]],
+  [/bedroom|lo-fi|lofi/, ["bedroom pop", "lo-fi", "intimate"]],
+  [/indie folk|folk|singer-songwriter|acoustic/, ["indie folk", "singer-songwriter", "acoustic"]],
+  [/indie rock|garage|post-punk|alternative rock/, ["indie rock", "alternative", "guitar-driven"]],
+  [/indie pop|indie/, ["indie pop", "alternative"]],
+  [/art pop|art-pop/, ["art pop", "experimental pop", "alternative pop"]],
+  [/experimental|avant-garde|avant/, ["experimental pop", "art pop", "unconventional"]],
+  [/hyperpop/, ["hyperpop", "experimental pop", "maximalist"]],
+  [/synth|electropop|electronic pop/, ["synth pop", "electronic", "alternative pop"]],
+  [/dance|house|disco/, ["dance", "electronic", "euphoric"]],
+  [/r&b|soul|neo soul|neo-soul/, ["r&b", "soul", "smooth"]],
+  [/jazz/, ["jazz pop", "jazz", "soft vocals"]],
+  [/pop/, ["alternative pop", "pop"]],
+  [/metal|doom|black metal/, ["metal", "dark", "heavy"]],
+  [/punk|hardcore/, ["punk", "guitar-driven", "high energy"]],
+  [/country|americana/, ["americana", "country", "storytelling"]],
+  [/goth|gothic|darkwave/, ["gothic", "dark", "atmospheric"]],
+  [/psychedelic|psych/, ["psychedelic pop", "dreamy", "experimental pop"]],
+  [/classical|chamber/, ["classical", "minimalist", "orchestral"]],
+  [/ambient|drone/, ["ambient", "atmospheric", "minimalist"]],
+];
 
-export function getArtistTags(artist: string) {
-  return styles[artist.trim().toLowerCase()]?.tags ?? fallback;
+export function genreTags(genres: string[]): string[] {
+  const out: string[] = [];
+  for (const genre of genres) {
+    for (const [re, tags] of genreMap) {
+      if (re.test(genre.toLowerCase())) for (const tag of tags) if (!out.includes(tag)) out.push(tag);
+    }
+  }
+  return out;
+}
+
+export function getArtistTags(artist: string, genres: string[] = []) {
+  const known = styles[artist.trim().toLowerCase()]?.tags ?? [];
+  const fromGenres = genreTags(genres);
+  return [...new Set([...known, ...fromGenres])].slice(0, 8).length
+    ? [...new Set([...known, ...fromGenres])].slice(0, 8)
+    : ["alternative", "indie"];
 }
 
 const labels: Record<string, string> = {
@@ -49,7 +82,12 @@ const labels: Record<string, string> = {
   "singer-songwriter": "singer-songwriter", "nostalgic": "nostalgic", "dark": "dark",
   "dreamy": "dreamy", "psychedelic pop": "psychedelic", "synth pop": "synth-pop",
   "gothic": "gothic", "dramatic": "dramatic", "shoegaze": "shoegaze", "dark americana": "dark-americana",
-  "alternative pop": "alternative-pop", "jazz pop": "jazz-pop"
+  "alternative pop": "alternative-pop", "jazz pop": "jazz-pop", "atmospheric": "atmospheric",
+  "lo-fi": "lo-fi", "intimate": "intimate", "guitar-driven": "guitar-driven",
+  "electronic": "electronic", "r&b": "r&b", "soul": "soul", "smooth": "smooth",
+  "hyperpop": "hyperpop", "maximalist": "maximalist", "dance": "dance", "euphoric": "euphoric",
+  "americana": "americana", "country": "country", "storytelling": "storytelling",
+  "ambient": "ambient", "minimalist": "minimalist", "classical": "classical",
 };
 
 const portraitBits: Record<string, string> = {
@@ -67,7 +105,13 @@ const portraitBits: Record<string, string> = {
   "indie rock": "you want a little mess around the edges",
   "dramatic": "you believe a bridge should occasionally ruin your evening",
   "shoegaze": "you appreciate atmosphere almost as much as melody",
-  "psychedelic pop": "you like familiar shapes with something slightly wrong inside them",
+  "guitar-driven": "you like songs that still feel touched by human hands",
+  "electronic": "you enjoy a good synthetic detail when it changes the emotional temperature",
+  "r&b": "you care about groove as much as melody",
+  "jazz pop": "you notice phrasing and texture more than most people do",
+  "ambient": "you don't need a song to hurry to the point",
+  "hyperpop": "you have a high tolerance for beautiful excess",
+  "americana": "you like stories that sound lived-in",
 };
 
 const redFlags: Record<string, string> = {
@@ -83,66 +127,140 @@ const redFlags: Record<string, string> = {
   "dark": "You call emotional devastation 'the vibe.'",
   "dreamy": "You have mentally edited your life into a music video at least once.",
   "indie rock": "You think a little distortion automatically makes a song more sincere.",
-  "dramatic": "You believe every inconvenience deserves a bridge.",
+  "hyperpop": "You will call sensory overload a production choice.",
+  "electronic": "You will forgive a song almost anything if the synth sound is good enough.",
 };
 
-export function getTasteProfile(artists: string[]): TasteProfile {
-  const counts = new Map<string, number>();
-  for (const artist of artists) for (const tag of getArtistTags(artist)) counts.set(tag, (counts.get(tag) ?? 0) + 1);
-  const tags = [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([tag]) => tag).slice(0, 4);
-  const human = tags.map(t => labels[t] ?? t);
+const palettes: Record<string, [string,string,string,string,string]> = {
+  "bedroom pop": ["washed-out yellow", "rain at 6 PM", "a bedroom with the window open", "late October", "a feeling you can't quite name"],
+  "dream pop": ["foggy blue", "light rain", "a half-empty cinema", "early November", "déjà vu"],
+  "indie folk": ["warm brown", "overcast afternoon", "a train window", "late autumn", "quiet longing"],
+  "art pop": ["electric violet", "a storm before it breaks", "a gallery after closing", "spring at midnight", "beautiful confusion"],
+  "dark": ["deep burgundy", "thunder after dark", "an empty motel", "late winter", "romantic dread"],
+  "indie rock": ["faded red", "windy evening", "a basement venue", "September", "restlessness"],
+  "nostalgic": ["sun-faded orange", "golden hour", "a childhood bedroom", "October", "remembering something differently"],
+  "electronic": ["chrome silver", "city lights after rain", "an empty train platform", "February", "electric anticipation"],
+  "ambient": ["pale blue", "fog before sunrise", "a quiet museum", "January", "weightlessness"],
+  "r&b": ["deep plum", "warm night air", "a dimly lit room", "August", "slow confidence"],
+  "americana": ["dusty gold", "late afternoon", "an old roadside diner", "October", "homesickness"],
+  "shoegaze": ["washed lavender", "heavy clouds", "a rehearsal room", "November", "beautiful noise"],
+};
+
+function buildTaste(artists: string[], tags: string[]): TasteProfile {
+  const cleanTags = [...new Set(tags)].slice(0, 6);
+  const human = cleanTags.map(t => labels[t] ?? t);
   const description = human.length > 1 ? `${human.slice(0, -1).join(", ")} + ${human.at(-1)}` : human[0] ?? "indie / alternative";
-  const lead = tags[0] ?? "alternative";
-  const second = tags[1] ?? "dreamy";
-  const bits = tags.slice(0, 3).map(t => portraitBits[t]).filter(Boolean);
+  const lead = cleanTags[0] ?? "alternative";
+  const second = cleanTags[1] ?? "dreamy";
+  const bits = cleanTags.slice(0, 3).map(t => portraitBits[t]).filter(Boolean);
   const portrait = bits.length >= 2
-    ? `${bits[0]}. ${bits[1]}. ${bits[2] ? `${bits[2]}.` : ""}`
+    ? `${bits[0]}. ${bits[1]}${bits[2] ? `. ${bits[2]}` : ""}.`
     : "You seem drawn to music that feels personal, a little off-center, and worth sitting with.";
-  const palettes: Record<string, [string,string,string,string,string]> = {
-    "bedroom pop": ["washed-out yellow", "rain at 6 PM", "a bedroom with the window open", "late October", "a feeling you can't quite name"],
-    "dream pop": ["foggy blue", "light rain", "a half-empty cinema", "early November", "déjà vu"],
-    "indie folk": ["warm brown", "overcast afternoon", "a train window", "late autumn", "quiet longing"],
-    "art pop": ["electric violet", "a storm before it breaks", "a gallery after closing", "spring at midnight", "beautiful confusion"],
-    "dark": ["deep burgundy", "thunder after dark", "an empty motel", "late winter", "romantic dread"],
-    "indie rock": ["faded red", "windy evening", "a basement venue", "September", "restlessness"],
-    "nostalgic": ["sun-faded orange", "golden hour", "a childhood bedroom", "October", "remembering something differently"],
+  const p = palettes[lead] ?? palettes[second] ?? ["off-white", "cloudy evening", "a tiny room with good speakers", "late autumn", "quiet anticipation"];
+  return {
+    tags: cleanTags,
+    description,
+    portrait,
+    redFlag: redFlags[lead] ?? redFlags[second] ?? "You have a suspiciously specific emotional soundtrack.",
+    color: p[0], weather: p[1], place: p[2], season: p[3], feeling: p[4]
   };
-  const p = palettes[lead] ?? ["off-white", "cloudy evening", "a tiny room with good speakers", "late autumn", "quiet anticipation"];
-  return { tags, description, portrait, redFlag: redFlags[lead] ?? redFlags[second] ?? "You have a suspiciously specific emotional soundtrack.", color: p[0], weather: p[1], place: p[2], season: p[3], feeling: p[4] };
 }
 
-export type CulturalMatch = { type: "movie" | "book" | "artist" | "album"; title: string; reason: string; url?: string; meta: string };
+export function getTasteProfile(artists: string[], genreHints: GenreHints = []) {
+  const counts = new Map<string, number>();
+  artists.forEach((artist, i) => {
+    for (const tag of getArtistTags(artist, genreHints[i] ?? [])) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+  });
+  const tags = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([tag]) => tag)
+    .slice(0, 6);
+  return buildTaste(artists, tags);
+}
+
+export function getTasteProfileFromTags(artists: string[], tags: string[]) {
+  return buildTaste(artists, tags.length ? tags : getTasteProfile(artists).tags);
+}
+
+type CulturalMatch = { type: "movie" | "book" | "artist" | "album"; title: string; reason: string; url?: string; meta: string };
+
+type CandidateArtist = {
+  title: string;
+  tags: string[];
+  meta: string;
+  url: string;
+};
+
+const candidateArtists: CandidateArtist[] = [
+  ["Wednesday", ["indie rock","guitar-driven","americana","alternative"], "artist · alt-country / indie rock"],
+  ["Spellling", ["art pop","experimental pop","dark","atmospheric"], "artist · art pop"],
+  ["Yaeji", ["electronic","dance","r&b","dream pop"], "artist · electronic / alt dance"],
+  ["Hatchie", ["dream pop","shoegaze","indie pop"], "artist · dream pop"],
+  ["Helena Deland", ["indie folk","dream pop","intimate"], "artist · indie / art pop"],
+  ["Nilüfer Yanya", ["indie rock","alternative","r&b","guitar-driven"], "artist · alternative"],
+  ["Kelela", ["r&b","electronic","experimental pop","atmospheric"], "artist · alternative R&B"],
+  ["Julia Holter", ["art pop","ambient","experimental pop","classical"], "artist · experimental pop"],
+  ["Blonde Redhead", ["dream pop","indie rock","shoegaze","experimental pop"], "artist · art rock"],
+  ["Wednesday Campanella", ["electronic","hyperpop","dance","experimental pop"], "artist · electronic pop"],
+  ["SASAMI", ["alternative","indie rock","art pop","guitar-driven"], "artist · alternative"],
+  ["Romy", ["dance","electronic","synth pop","euphoric"], "artist · dance / synth pop"],
+  ["Cassandra Jenkins", ["indie folk","ambient","singer-songwriter","atmospheric"], "artist · indie folk"],
+  ["Jessica Pratt", ["indie folk","singer-songwriter","dreamy","intimate"], "artist · folk"],
+  ["Hurray for the Riff Raff", ["americana","indie folk","storytelling","alternative"], "artist · Americana"],
+  ["L'Rain", ["experimental pop","r&b","ambient","psychedelic pop"], "artist · experimental"],
+  ["Raveena", ["r&b","soul","dreamy","soft vocals"], "artist · R&B / soul"],
+  ["Porridge Radio", ["indie rock","dramatic","alternative","guitar-driven"], "artist · indie rock"],
+  ["Puma Blue", ["r&b","jazz pop","dream pop","soft vocals"], "artist · alternative R&B"],
+  ["Sudan Archives", ["r&b","experimental pop","electronic","art pop"], "artist · experimental R&B"],
+  ["Ichiko Aoba", ["ambient","singer-songwriter","classical","intimate"], "artist · folk / ambient"],
+  ["MUNA", ["indie pop","synth pop","euphoric","alternative pop"], "artist · indie pop"],
+  ["Kero Kero Bonito", ["hyperpop","indie pop","electronic","experimental pop"], "artist · electronic pop"],
+  ["Arlo Parks", ["indie pop","r&b","soft vocals","singer-songwriter"], "artist · indie / R&B"],
+  ["Black Country, New Road", ["indie rock","dramatic","art pop","guitar-driven"], "artist · experimental rock"],
+  ["Slowdive", ["shoegaze","dream pop","atmospheric","guitar-driven"], "artist · shoegaze"],
+  ["Grouper", ["ambient","dream pop","minimalist","intimate"], "artist · ambient / folk"],
+  ["Kali Uchis", ["r&b","dreamy","psychedelic pop","soft vocals"], "artist · alternative R&B"],
+  ["Arooj Aftab", ["jazz","ambient","singer-songwriter","atmospheric"], "artist · experimental jazz"],
+  ["Magdalena Bay", ["synth pop","hyperpop","art pop","electronic"], "artist · synth / art pop"],
+].map(([title, tags, meta]) => ({ title: title as string, tags: tags as string[], meta: meta as string, url: `https://open.spotify.com/search/${encodeURIComponent(title as string)}` }));
 
 const culturalByTag: Record<string, CulturalMatch[]> = {
   "bedroom pop": [
     { type: "movie", title: "Frances Ha", meta: "movie · 2012", reason: "small feelings, messy friendships, and a life that refuses to become a neat narrative" },
     { type: "book", title: "Normal People", meta: "book · Sally Rooney", reason: "intimacy, awkwardness, and the strange gravity between two people" },
-    { type: "artist", title: "Faye Webster", meta: "artist · indie folk", reason: "deadpan tenderness with the same low-volume emotional precision", url: "https://open.spotify.com/search/Faye%20Webster" },
     { type: "album", title: "Jubilee", meta: "album · Japanese Breakfast", reason: "bright surfaces with a very human ache underneath", url: "https://open.spotify.com/search/Japanese%20Breakfast%20Jubilee" },
   ],
   "dream pop": [
     { type: "movie", title: "Lost in Translation", meta: "movie · 2003", reason: "soft-focus loneliness, atmosphere, and feelings that never fully become words" },
     { type: "book", title: "The Waves", meta: "book · Virginia Woolf", reason: "more mood than plot, with consciousness moving like music" },
-    { type: "artist", title: "Men I Trust", meta: "artist · dream pop", reason: "silky textures, low-key grooves, and a little emotional distance", url: "https://open.spotify.com/search/Men%20I%20Trust" },
     { type: "album", title: "Bloom", meta: "album · Beach House", reason: "lush, floating, and quietly enormous", url: "https://open.spotify.com/search/Beach%20House%20Bloom" },
   ],
   "indie folk": [
     { type: "movie", title: "Past Lives", meta: "movie · 2023", reason: "quiet longing without forcing every feeling into a speech" },
     { type: "book", title: "The Idiot", meta: "book · Elif Batuman", reason: "observant, awkward, funny, and very interested in tiny human details" },
-    { type: "artist", title: "Florist", meta: "artist · indie folk", reason: "spare, intimate songwriting that rewards paying attention", url: "https://open.spotify.com/search/Florist" },
-    { type: "album", title: "Dragon New Warm Mountain I Believe in You", meta: "album · Big Thief", reason: "restless, earthy songwriting with room for weird little moments", url: "https://open.spotify.com/search/Big%20Thief%20Dragon%20New%20Warm%20Mountain" },
+    { type: "album", title: "Dragon New Warm Mountain I Believe in You", meta: "album · Big Thief", reason: "restless, earthy songwriting with room for weird little moments", url: "https://open.spotify.com/search/Big%20Thief%20Dragon%20New%20Mountain" },
   ],
   "art pop": [
     { type: "movie", title: "The Lobster", meta: "movie · 2015", reason: "beautiful, strange, deadpan, and deliberately difficult to categorize" },
     { type: "book", title: "Orlando", meta: "book · Virginia Woolf", reason: "playful identity, surreal shifts, and a love of bending the rules" },
-    { type: "artist", title: "Spellling", meta: "artist · art pop", reason: "world-building, theatricality, and pop instincts pushed somewhere uncanny", url: "https://open.spotify.com/search/Spellling" },
     { type: "album", title: "Desire, I Want to Turn Into You", meta: "album · Caroline Polachek", reason: "maximalist detail without losing the emotional center", url: "https://open.spotify.com/search/Caroline%20Polachek%20Desire" },
   ],
   "dark": [
     { type: "movie", title: "The Green Knight", meta: "movie · 2021", reason: "beautiful dread, myth, and a willingness to sit in the uncomfortable part" },
     { type: "book", title: "The Secret History", meta: "book · Donna Tartt", reason: "beautiful people, bad decisions, atmosphere for days" },
-    { type: "artist", title: "Chelsea Wolfe", meta: "artist · dark alternative", reason: "heavy atmosphere with a surprisingly intimate core", url: "https://open.spotify.com/search/Chelsea%20Wolfe" },
     { type: "album", title: "Preacher's Daughter", meta: "album · Ethel Cain", reason: "slow-burn storytelling that treats atmosphere as part of the plot", url: "https://open.spotify.com/search/Ethel%20Cain%20Preachers%20Daughter" },
+  ],
+  "r&b": [
+    { type: "movie", title: "Moonlight", meta: "movie · 2016", reason: "quiet intimacy, identity, and emotion carried as much by atmosphere as dialogue" },
+    { type: "book", title: "Giovanni's Room", meta: "book · James Baldwin", reason: "interior emotion, desire, and beautifully controlled prose" },
+    { type: "album", title: "Ctrl", meta: "album · SZA", reason: "messy honesty and sharp emotional self-awareness", url: "https://open.spotify.com/search/SZA%20Ctrl" },
+  ],
+  "electronic": [
+    { type: "movie", title: "After Yang", meta: "movie · 2021", reason: "soft futurism, memory, and a fascination with tiny emotional details" },
+    { type: "book", title: "Klara and the Sun", meta: "book · Kazuo Ishiguro", reason: "quiet speculative fiction with an uncanny emotional center" },
+    { type: "album", title: "Oil of Every Pearl's Un-Insides", meta: "album · SOPHIE", reason: "synthetic textures pushed into something emotionally physical", url: "https://open.spotify.com/search/SOPHIE%20Oil%20of%20Every%20Pearl%27s%20Un-Insides" },
   ],
 };
 
@@ -152,18 +270,58 @@ const oppositeByTag: Record<string, { title: string; meta: string; reason: strin
   "indie folk": { title: "The Wolf of Wall Street", meta: "movie · 2013", reason: "you like quiet observation; this is loud, glossy, relentless spectacle" },
   "art pop": { title: "Fast & Furious 7", meta: "movie · 2015", reason: "you like strange little details; this is pure blockbuster momentum" },
   "dark": { title: "Mamma Mia!", meta: "movie · 2008", reason: "you lean toward gothic weather; this is aggressively sunny musical joy" },
+  "r&b": { title: "Metal Machine Music", meta: "album · Lou Reed", reason: "you like groove and warmth; this is abrasive, abstract, and intentionally hostile", url: "https://open.spotify.com/search/Lou%20Reed%20Metal%20Machine%20Music" },
+  "electronic": { title: "The Sound of Music", meta: "movie · 1965", reason: "you like synthetic edges; this is maximal old-school musical warmth", },
   "indie rock": { title: "Future Nostalgia", meta: "album · Dua Lipa", reason: "you like rough edges; this is sleek, polished dance-pop architecture", url: "https://open.spotify.com/search/Dua%20Lipa%20Future%20Nostalgia" },
   "nostalgic": { title: "Uncut Gems", meta: "movie · 2019", reason: "you like wistful reflection; this is anxiety turned into a two-hour sprint" },
 };
 
-export function getCulturalMatches(artists: string[], count = 4) {
-  const profile = getTasteProfile(artists);
-  const pool = [...profile.tags.flatMap(tag => culturalByTag[tag] ?? []), ...culturalByTag["bedroom pop"]];
-  const seen = new Set<string>();
-  return pool.filter(item => !seen.has(`${item.type}:${item.title}`) && seen.add(`${item.type}:${item.title}`)).slice(0, count);
+function overlapScore(a: string[], b: string[]) {
+  const A = new Set(a);
+  const B = new Set(b);
+  return [...A].filter(x => B.has(x)).length;
 }
 
-export function getMusicalOpposite(artists: string[]) {
-  const profile = getTasteProfile(artists);
+function chooseArtistMatch(tags: string[], inputArtists: string[]) {
+  const excluded = new Set(inputArtists.map(x => x.toLowerCase()));
+  const scored = candidateArtists
+    .filter(c => !excluded.has(c.title.toLowerCase()))
+    .map(c => {
+      const shared = overlapScore(tags, c.tags);
+      const rareBonus = c.tags.filter(t => ["ambient","americana","r&b","experimental pop","shoegaze","hyperpop","jazz pop"].includes(t)).length * 0.15;
+      const score = shared + rareBonus;
+      return { ...c, score };
+    })
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title));
+  return scored[0];
+}
+
+export function getCulturalMatches(artists: string[], storedTags?: string[], count = 4) {
+  const profile = storedTags?.length ? getTasteProfileFromTags(artists, storedTags) : getTasteProfile(artists);
+  const artist = chooseArtistMatch(profile.tags, artists);
+  const pool: CulturalMatch[] = [];
+  if (artist) pool.push({ type: "artist", title: artist.title, meta: artist.meta, reason: `a left-field connection to your ${profile.tags.slice(0, 3).join(" / ")} taste — close enough to make sense, different enough to be a discovery`, url: artist.url });
+  const nonArtists = profile.tags.flatMap(tag => culturalByTag[tag] ?? []);
+  const seen = new Set(pool.map(x => `${x.type}:${x.title}`));
+  for (const item of nonArtists) {
+    const key = `${item.type}:${item.title}`;
+    if (!seen.has(key)) { pool.push(item); seen.add(key); }
+    if (pool.length >= count) break;
+  }
+  const defaults: CulturalMatch[] = [
+    { type: "movie", title: "Perfect Days", meta: "movie · 2023", reason: "quiet observation, ritual, and finding beauty in ordinary details" },
+    { type: "book", title: "The Anthropocene Reviewed", meta: "book · John Green", reason: "small cultural observations turned into unexpectedly intimate essays" },
+    { type: "album", title: "Titanic Rising", meta: "album · Weyes Blood", reason: "lush songwriting that balances intimacy with scale", url: "https://open.spotify.com/search/Weyes%20Blood%20Titanic%20Rising" },
+  ];
+  for (const item of defaults) {
+    const key = `${item.type}:${item.title}`;
+    if (!seen.has(key)) { pool.push(item); seen.add(key); }
+    if (pool.length >= count) break;
+  }
+  return pool.slice(0, count);
+}
+
+export function getMusicalOpposite(artists: string[], storedTags?: string[]) {
+  const profile = storedTags?.length ? getTasteProfileFromTags(artists, storedTags) : getTasteProfile(artists);
   return oppositeByTag[profile.tags[0]] ?? oppositeByTag["indie rock"];
 }

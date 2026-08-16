@@ -53,6 +53,7 @@ export async function GET(req: Request) {
       id: artist.id,
       name: artist.name,
       spotifyUrl: artist.external_urls?.spotify ?? `https://open.spotify.com/artist/${artist.id}`,
+      genres: artist.genres ?? [],
     }));
 
     return NextResponse.json({ artists });

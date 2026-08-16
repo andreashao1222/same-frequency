@@ -19,8 +19,11 @@ export async function POST(req: Request) {
     const artists = Array.isArray(body.artists)
       ? body.artists.map((x: unknown) => String(x).trim()).filter(Boolean).slice(0, 5)
       : [];
-    const musicPlatform = String(body.musicPlatform ?? "").trim() || null;
+    const musicPlatform = null;
     const musicProfileUrl = String(body.musicProfileUrl ?? "").trim() || null;
+    const artistGenres = Array.isArray(body.artistGenres)
+      ? body.artistGenres.slice(0, 5).map((g: unknown) => Array.isArray(g) ? g.map((x: unknown) => String(x)) : [])
+      : [];
 
     if (artists.length !== 5) {
       return NextResponse.json({ error: "Choose exactly 5 artists." }, { status: 400 });
@@ -35,7 +38,7 @@ export async function POST(req: Request) {
       }
     }
 
-    const taste = getTasteProfile(artists);
+    const taste = getTasteProfile(artists, artistGenres);
     const db = client();
 
     const { data: existing } = musicProfileUrl

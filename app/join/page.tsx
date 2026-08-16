@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Check, Plus, X } from "lucide-react";
 
-type Artist = { id: string; name: string; spotifyUrl: string };
+type Artist = { id: string; name: string; spotifyUrl: string; genres?: string[] };
 
 export default function JoinPage() {
   const router = useRouter();
@@ -62,6 +62,7 @@ export default function JoinPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         artists: artists.map(a => a.name),
+        artistGenres: artists.map(a => a.genres ?? []),
         musicPlatform: null,
         musicProfileUrl: profileUrl || null,
       })
