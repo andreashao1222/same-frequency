@@ -26,48 +26,123 @@ function escapeXml(value: string) {
 }
 
 function posterSvg(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: { title: string; meta: string; reason: string; url?: string }) {
-  const artists = profile.artists.map((artist, i) => `<text x="80" y="${690 + i * 72}" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700"><tspan fill="#77736c">0${i + 1}</tspan><tspan dx="24" fill="#171714">${escapeXml(artist)}</tspan></text>`).join("");
-  const tags = taste.tags.map((tag, i) => `<rect x="80" y="${1080 + i * 52}" width="${Math.max(150, tag.length * 18 + 48)}" height="38" rx="19" fill="#171714"/><text x="${104}" y="${1107 + i * 52}" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#ffffff">${escapeXml(tag)}</text>`).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
-    <rect width="1200" height="1500" fill="#f2eee4"/>
-    <rect x="35" y="35" width="1130" height="1430" fill="none" stroke="#171714" stroke-width="3"/>
-    <text x="80" y="100" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="900" letter-spacing="4" fill="#171714">SAME FREQUENCY.</text>
-    <text x="80" y="205" font-family="Georgia, Times New Roman, serif" font-size="92" font-weight="700" fill="#171714">my frequency.</text>
-    <text x="80" y="255" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#77736c">what my music taste says about me</text>
-    <rect x="80" y="315" width="1040" height="250" fill="#d8df62" stroke="#171714" stroke-width="2"/>
-    <text x="112" y="365" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="900" letter-spacing="3" fill="#171714">THE READ</text>
-    <foreignObject x="110" y="395" width="970" height="140">
-      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Arial,Helvetica,sans-serif;font-size:31px;line-height:1.25;color:#171714;font-weight:700">${escapeXml(taste.portrait)}</div>
-    </foreignObject>
-    <line x1="80" y1="625" x2="1120" y2="625" stroke="#171714" stroke-width="2"/>
-    <text x="80" y="675" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="900" letter-spacing="3" fill="#77736c">MY FIVE</text>
+  const W = 900;
+  const H = 1760;
+  const ink = "#171714";
+  const paper = "#f3eee2";
+  const red = "#a94f42";
+  const muted = "#6f6a62";
+  const mono = `"Courier New", Courier, monospace`;
+  const serif = `Georgia, "Times New Roman", serif`;
+
+  const text = (value: string) => escapeXml(value);
+  const wrap = (value: string, maxChars: number) => {
+    const words = String(value || "").split(/\s+/).filter(Boolean);
+    const lines: string[] = [];
+    let line = "";
+    for (const word of words) {
+      const next = line ? `${line} ${word}` : word;
+      if (next.length > maxChars && line) {
+        lines.push(line);
+        line = word;
+      } else {
+        line = next;
+      }
+    }
+    if (line) lines.push(line);
+    return lines.length ? lines : [""];
+  };
+  const multiline = (value: string, x: number, y: number, maxChars: number, lineHeight: number, attrs: string) =>
+    wrap(value, maxChars).map((line, i) => `<text x="${x}" y="${y + i * lineHeight}" ${attrs}>${text(line)}</text>`).join("");
+
+  const artists = profile.artists.slice(0, 5).map((artist, i) => {
+    const y = 710 + i * 66;
+    return `<text x="76" y="${y}" font-family="Courier New, Courier, monospace" font-size="21" fill="${muted}">${String(i + 1).padStart(2, "0")}</text>
+      <text x="128" y="${y}" font-family="Courier New, Courier, monospace" font-size="23" font-weight="700" fill="${ink}">${text(artist)}</text>
+      <line x1="76" y1="${y + 20}" x2="490" y2="${y + 20}" stroke="${ink}" stroke-opacity=".18"/>`;
+  }).join("");
+
+  const sonic = [taste.weather, taste.place, taste.season, taste.feeling].filter(Boolean);
+  const sonicMarkup = sonic.map((item, i) => {
+    const y = 705 + i * 63;
+    return `${multiline(item, 548, y, 26, 24, `font-family="Courier New, Courier, monospace" font-size="16" fill="${ink}"`)}<line x1="548" y1="${y + 20 + Math.max(0, wrap(item, 26).length - 1) * 24}" x2="822" y2="${y + 20 + Math.max(0, wrap(item, 26).length - 1) * 24}" stroke="${ink}" stroke-opacity=".18"/>`;
+  }).join("");
+
+  let tagY = 1038;
+  const tagMarkup: string[] = [];
+  let tagX = 76;
+  for (const tag of taste.tags.slice(0, 6)) {
+    const width = Math.max(112, Math.min(300, tag.length * 9.5 + 34));
+    if (tagX + width > 824) { tagX = 76; tagY += 45; }
+    tagMarkup.push(`<rect x="${tagX}" y="${tagY - 22}" width="${width}" height="30" rx="15" fill="none" stroke="${ink}" stroke-width="1.2"/>`);
+    tagMarkup.push(`<text x="${tagX + 15}" y="${tagY - 2}" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" fill="${ink}">${text(tag)}</text>`);
+    tagX += width + 10;
+  }
+  const tagsEnd = tagY + 28;
+
+  const oppositeTop = tagsEnd + 52;
+  const reasonLines = wrap(opposite.reason, 62);
+  const reasonStart = oppositeTop + 95;
+  const barcodeTop = reasonStart + Math.max(2, reasonLines.length) * 24 + 42;
+  const bars = Array.from({ length: 54 }, (_, i) => {
+    const widths = [2, 3, 1, 4, 2, 1, 3, 2, 4];
+    const w = widths[i % widths.length];
+    const x = 235 + i * 8;
+    return `<rect x="${x}" y="${barcodeTop}" width="${w}" height="70" fill="${ink}"/>`;
+  }).join("");
+
+  const zigzag = (y: number) => Array.from({ length: 45 }, (_, i) => `${i * 20},${y + (i % 2 ? 8 : 0)}`).join(" ");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+    <rect width="${W}" height="${H}" fill="#080808"/>
+    <path d="M70 20 H830 V${H - 20} H70 Z" fill="${paper}"/>
+    <polygon points="${zigzag(20)}" fill="${paper}"/>
+    <polygon points="${zigzag(H - 20)}" fill="${paper}" transform="translate(0,${-8})"/>
+
+    <text x="76" y="72" font-family="Courier New, Courier, monospace" font-size="14" font-weight="700" letter-spacing="2.5" fill="${ink}">SAME FREQUENCY.</text>
+    <text x="824" y="72" text-anchor="end" font-family="Courier New, Courier, monospace" font-size="13" fill="${ink}">NO. ${text(profile.id.slice(0, 6).toUpperCase())}</text>
+    <text x="76" y="96" font-family="Courier New, Courier, monospace" font-size="11" fill="${muted}">a tiny cultural taste experiment</text>
+    <line x1="76" y1="120" x2="824" y2="120" stroke="${ink}" stroke-dasharray="4 7"/>
+
+    <text x="76" y="205" font-family="Georgia, Times New Roman, serif" font-size="67" font-weight="700" fill="${ink}">my frequency.</text>
+    <text x="76" y="238" font-family="Courier New, Courier, monospace" font-size="12" font-weight="700" letter-spacing="1.6" fill="${muted}">WHAT MY MUSIC TASTE SAYS ABOUT ME</text>
+    <line x1="76" y1="268" x2="824" y2="268" stroke="${ink}" stroke-dasharray="4 7"/>
+
+    <text x="76" y="310" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">THE READ</text>
+    ${multiline(taste.portrait, 76, 350, 58, 34, `font-family="Courier New, Courier, monospace" font-size="23" font-weight="700" fill="${ink}"`)}
+
+    <line x1="76" y1="490" x2="824" y2="490" stroke="${ink}" stroke-dasharray="4 7"/>
+    <text x="76" y="530" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${ink}">MY FIVE</text>
+    <text x="548" y="530" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${ink}">MY SONIC WORLD</text>
+    <line x1="520" y1="552" x2="520" y2="1030" stroke="${ink}" stroke-dasharray="3 6"/>
     ${artists}
-    <text x="700" y="675" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="900" letter-spacing="3" fill="#77736c">MY SONIC WORLD</text>
-    <text x="700" y="735" font-family="Georgia, Times New Roman, serif" font-size="38" font-weight="700" fill="#171714">${escapeXml(taste.color)}</text>
-    <text x="700" y="800" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#171714">${escapeXml(taste.weather)}</text>
-    <text x="700" y="855" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#171714">${escapeXml(taste.place)}</text>
-    <text x="700" y="910" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#171714">${escapeXml(taste.season)}</text>
-    <text x="700" y="965" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#171714">${escapeXml(taste.feeling)}</text>
-    <line x1="80" y1="1020" x2="1120" y2="1020" stroke="#171714" stroke-width="2"/>
-    <text x="80" y="1060" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="900" letter-spacing="3" fill="#77736c">MY TAGS</text>
-    ${tags}
-    <rect x="650" y="1070" width="470" height="250" fill="#b65a4c" stroke="#171714" stroke-width="2"/>
-    <text x="680" y="1115" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="900" letter-spacing="3" fill="#171714">PROBABLY NOT MY THING</text>
-    <text x="680" y="1185" font-family="Georgia, Times New Roman, serif" font-size="43" font-weight="700" fill="#171714">${escapeXml(opposite.title)}</text>
-    <text x="680" y="1235" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#171714">${escapeXml(opposite.meta)}</text>
-    <foreignObject x="680" y="1260" width="410" height="80"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.35;color:#171714">${escapeXml(opposite.reason)}</div></foreignObject>
-    <text x="80" y="1420" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#77736c">same-frequency. / a tiny cultural taste experiment</text>
+    <text x="548" y="580" font-family="Georgia, Times New Roman, serif" font-size="28" font-weight="700" fill="${ink}">${text(taste.color)}</text>
+    ${sonicMarkup}
+
+    <line x1="76" y1="1010" x2="824" y2="1010" stroke="${ink}" stroke-dasharray="4 7"/>
+    <text x="76" y="1050" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">MY TAGS</text>
+    ${tagMarkup.join("")}
+
+    <line x1="76" y1="${tagsEnd + 8}" x2="824" y2="${tagsEnd + 8}" stroke="${ink}" stroke-dasharray="4 7"/>
+    <text x="76" y="${oppositeTop}" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">PROBABLY NOT MY THING</text>
+    <text x="76" y="${oppositeTop + 48}" font-family="Georgia, Times New Roman, serif" font-size="35" font-weight="700" fill="${ink}">${text(opposite.title)}</text>
+    <text x="76" y="${oppositeTop + 73}" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" fill="${ink}">${text(opposite.meta)}</text>
+    ${multiline(opposite.reason, 76, reasonStart, 62, 24, `font-family="Courier New, Courier, monospace" font-size="16" fill="${ink}"`)}
+
+    <line x1="76" y1="${barcodeTop - 25}" x2="824" y2="${barcodeTop - 25}" stroke="${ink}" stroke-dasharray="4 7"/>
+    ${bars}
+    <text x="450" y="${barcodeTop + 95}" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="${ink}">THANKS FOR SHARING YOUR FREQUENCY.</text>
+    <text x="450" y="${barcodeTop + 120}" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="${red}">SAME-FREQUENCY.</text>
   </svg>`;
 }
-
 async function posterBlob(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: { title: string; meta: string; reason: string; url?: string }) {
   const svg = posterSvg(profile, taste, opposite);
   const image = new Image();
   image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
   await new Promise<void>((resolve, reject) => { image.onload = () => resolve(); image.onerror = () => reject(new Error("poster render failed")); });
   const canvas = document.createElement("canvas");
-  canvas.width = 1200;
-  canvas.height = 1500;
+  canvas.width = 900;
+  canvas.height = 1760;
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("canvas unavailable");
   ctx.drawImage(image, 0, 0);
