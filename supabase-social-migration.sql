@@ -7,6 +7,11 @@ alter table public.profiles
 alter table public.profiles
   add column if not exists music_profile_url text;
 
+
+-- Store the AI-generated cultural report so it is generated once and reused.
+alter table public.profiles
+  add column if not exists ai_report jsonb;
+
 -- Preserve old Spotify data.
 update public.profiles
 set

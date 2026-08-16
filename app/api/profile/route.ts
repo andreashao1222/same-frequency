@@ -11,7 +11,7 @@ export async function GET(req: Request) {
 
   const { data, error } = await client()
     .from("profiles")
-    .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, created_at")
+    .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, ai_report, created_at")
     .eq("id", id)
     .maybeSingle();
 

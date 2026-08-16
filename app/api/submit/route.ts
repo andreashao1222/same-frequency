@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { getTasteProfile } from "@/lib/taste";
+import { analyzeTasteWithAI } from "@/lib/ai";
 
 function client() {
   return createClient(
@@ -39,12 +40,13 @@ export async function POST(req: Request) {
     }
 
     const taste = getTasteProfile(artists, artistGenres);
+    const aiReport = await analyzeTasteWithAI(artists, artistGenres);
     const db = client();
 
     const { data: existing } = musicProfileUrl
       ? await db
           .from("profiles")
-          .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, created_at")
+          .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, ai_report, created_at")
           .eq("music_profile_url", musicProfileUrl)
           .maybeSingle()
       : { data: null };
@@ -57,8 +59,9 @@ export async function POST(req: Request) {
       music_platform: null,
       music_profile_url: musicProfileUrl,
       spotify_url: null,
-      taste_tags: taste.tags
-    }).select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, created_at").single();
+      taste_tags: aiReport?.tags ?? taste.tags,
+      ai_report: aiReport
+    }).select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, ai_report, created_at").single();
 
     if (error) throw error;
     return NextResponse.json({ profile: data });

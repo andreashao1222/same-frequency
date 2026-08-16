@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Share2, Sparkles } from "lucide-react";
 import { getTasteProfile, getTasteProfileFromTags, getCulturalMatches, getMusicalOpposite } from "@/lib/taste";
+import type { AIReport, CulturalMatch } from "@/lib/ai";
 
 type Profile = {
   id: string;
@@ -14,6 +15,7 @@ type Profile = {
   music_profile_url: string | null;
   spotify_url: string | null;
   taste_tags: string[];
+  ai_report?: AIReport | null;
   score?: number;
   sharedArtists?: string[];
   sharedTags?: string[];
@@ -23,7 +25,7 @@ function escapeXml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 }
 
-function posterSvg(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: ReturnType<typeof getMusicalOpposite>) {
+function posterSvg(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: { title: string; meta: string; reason: string; url?: string }) {
   const artists = profile.artists.map((artist, i) => `<text x="80" y="${690 + i * 72}" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700"><tspan fill="#77736c">0${i + 1}</tspan><tspan dx="24" fill="#171714">${escapeXml(artist)}</tspan></text>`).join("");
   const tags = taste.tags.map((tag, i) => `<rect x="80" y="${1080 + i * 52}" width="${Math.max(150, tag.length * 18 + 48)}" height="38" rx="19" fill="#171714"/><text x="${104}" y="${1107 + i * 52}" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#ffffff">${escapeXml(tag)}</text>`).join("");
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
@@ -58,7 +60,7 @@ function posterSvg(profile: Profile, taste: ReturnType<typeof getTasteProfile>, 
   </svg>`;
 }
 
-async function posterBlob(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: ReturnType<typeof getMusicalOpposite>) {
+async function posterBlob(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: { title: string; meta: string; reason: string; url?: string }) {
   const svg = posterSvg(profile, taste, opposite);
   const image = new Image();
   image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
@@ -98,7 +100,7 @@ function MatchesContent() {
           const artists = JSON.parse(localStorage.getItem("sf_artists") || "[]");
           if (artists.length === 5) {
             const taste = getTasteProfile(artists);
-            setProfile({ id, alias: "you", artists, music_platform: localStorage.getItem("sf_music_platform"), music_profile_url: localStorage.getItem("sf_music_profile_url"), spotify_url: localStorage.getItem("sf_music_profile_url"), taste_tags: taste.tags });
+            setProfile({ id, alias: "you", artists, music_platform: localStorage.getItem("sf_music_platform"), music_profile_url: localStorage.getItem("sf_music_profile_url"), spotify_url: localStorage.getItem("sf_music_profile_url"), taste_tags: taste.tags, ai_report: null });
           }
         }
       } catch {}
@@ -126,9 +128,24 @@ function MatchesContent() {
   }
   if (!profile) return <main className="min-h-screen grid place-items-center noise">Loading…</main>;
 
-  const taste = getTasteProfileFromTags(profile.artists, profile.taste_tags);
-  const cultural = getCulturalMatches(profile.artists, profile.taste_tags);
-  const opposite = getMusicalOpposite(profile.artists, profile.taste_tags);
+  const fallbackTaste = getTasteProfileFromTags(profile.artists, profile.taste_tags);
+  const ai = profile.ai_report;
+  const taste = ai ? {
+    ...fallbackTaste,
+    tags: ai.tags,
+    description: ai.description,
+    portrait: ai.portrait,
+    redFlag: ai.redFlag,
+    color: ai.color,
+    weather: ai.weather,
+    place: ai.place,
+    season: ai.season,
+    feeling: ai.feeling
+  } : fallbackTaste;
+  const cultural: CulturalMatch[] = ai?.culturalMatches?.length
+    ? ai.culturalMatches
+    : getCulturalMatches(profile.artists, profile.taste_tags);
+  const opposite = ai?.opposite ?? getMusicalOpposite(profile.artists, profile.taste_tags);
   const isOwnReport = profile.id === ownIdRef.current;
 
   const share = async () => {
@@ -166,7 +183,7 @@ function MatchesContent() {
         <div className="border-b-2 border-black pb-12">
           <p className="text-xs font-bold uppercase tracking-[.25em]">{isOwnReport ? "your frequency" : `${profile.alias}'s frequency`}</p>
           <h1 className="display mt-4 max-w-5xl text-6xl leading-[.88] md:text-8xl">What your music<br/><i>says about you.</i></h1>
-          <p className="mt-7 max-w-2xl text-lg leading-7 text-neutral-600">A tiny cultural profile built only from the five artists this listener picked. Not a personality test — just the vibe their taste gives off.</p>
+          <p className="mt-7 max-w-2xl text-lg leading-7 text-neutral-600">A tiny cultural profile built from the five artists this listener picked. The report is an AI reading of their sonic and cultural taste — not a personality test.</p>
           <div className="mt-8 flex flex-wrap gap-2">{taste.tags.map(tag => <span key={tag} className="rounded-full bg-black px-4 py-2 text-sm font-bold text-white">{tag}</span>)}</div>
           {profile.music_profile_url && <a href={profile.music_profile_url} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold underline">open {profile.music_platform || "music"} profile <ExternalLink size={14}/></a>}
         </div>
@@ -178,7 +195,7 @@ function MatchesContent() {
 
         <section className="mt-14"><div className="flex items-end justify-between border-b-2 border-black pb-4"><div><p className="text-xs font-bold uppercase tracking-[.2em]">if their taste were...</p><h2 className="display mt-2 text-5xl">a little world.</h2></div><Sparkles className="hidden md:block" /></div><div className="grid gap-3 pt-5 md:grid-cols-5"><Vibe label="a color" value={taste.color}/><Vibe label="the weather" value={taste.weather}/><Vibe label="a place" value={taste.place}/><Vibe label="a season" value={taste.season}/><Vibe label="a feeling" value={taste.feeling}/></div></section>
 
-        <section className="mt-14 border border-black bg-[#d9ff57] p-6 md:p-8"><p className="text-xs font-bold uppercase tracking-[.2em]">cultural matches</p><h2 className="display mt-3 text-5xl md:text-6xl">Their next rabbit holes.</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700">Not more music recommendations — things from the same emotional neighborhood.</p><div className="mt-7 grid gap-3 md:grid-cols-2">{cultural.map(item => <a key={`${item.type}-${item.title}`} href={item.url} target={item.url ? "_blank" : undefined} rel={item.url ? "noreferrer" : undefined} className="group border border-black bg-white/55 p-5 transition hover:-translate-y-1 hover:bg-white"><div className="flex items-center justify-between"><span className="text-[10px] font-black uppercase tracking-[.18em]">{item.type}</span>{item.url && <ArrowUpRight size={16}/>}</div><h3 className="display mt-8 text-3xl">{item.title}</h3><p className="mt-1 text-xs font-bold text-neutral-500">{item.meta}</p><p className="mt-4 text-sm leading-6 text-neutral-700">{item.reason}</p>{item.url && <p className="mt-5 text-xs font-bold underline group-hover:no-underline">open on Spotify ↗</p>}</a>)}</div></section>
+        <section className="mt-14 border border-black bg-[#d9ff57] p-6 md:p-8"><p className="text-xs font-bold uppercase tracking-[.2em]">cultural matches</p><h2 className="display mt-3 text-5xl md:text-6xl">Their next rabbit holes.</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-700">Not more music recommendations — things from the same emotional neighborhood.</p><div className="mt-7 grid gap-3 md:grid-cols-2">{cultural.map(item => <a key={`${item.type}-${item.title}`} href={item.url} target={item.url ? "_blank" : undefined} rel={item.url ? "noreferrer" : undefined} className="group border border-black bg-white/55 p-5 transition hover:-translate-y-1 hover:bg-white"><div className="flex items-center justify-between"><span className="text-[10px] font-black uppercase tracking-[.18em]">{item.type}</span>{item.url && <ArrowUpRight size={16}/>}</div><h3 className="display mt-8 text-3xl">{item.title}</h3><p className="mt-1 text-xs font-bold text-neutral-500">{item.meta}</p><p className="mt-4 text-sm leading-6 text-neutral-700">{item.reason}</p>{item.url && <p className="mt-5 text-xs font-bold underline group-hover:no-underline">open music ↗</p>}</a>)}</div></section>
 
         <section className="mt-14 overflow-hidden border border-black bg-black text-white"><div className="grid gap-0 md:grid-cols-[1fr_1.2fr]"><div className="p-7 md:p-9"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#d9ff57]">your musical opposite</p><h2 className="display mt-5 text-5xl md:text-6xl">We found something they might hate.</h2><p className="mt-6 text-sm leading-6 text-neutral-300">Their taste leans one way. We deliberately went the other way.</p></div><div className="bg-[#ff795f] p-7 text-black md:p-9"><p className="text-xs font-bold uppercase tracking-[.2em]">probably not their thing</p><h3 className="display mt-5 text-5xl">{opposite.title}</h3><p className="mt-1 text-sm font-bold">{opposite.meta}</p><p className="mt-6 max-w-xl text-lg leading-7">{opposite.reason}.</p><p className="mt-8 border-t border-black/30 pt-4 text-sm font-black">Will they hate it? <span className="font-normal">Probably.</span></p>{opposite.url && <a href={opposite.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-black underline">prove us wrong <ArrowUpRight size={15}/></a>}</div></div></section>
 

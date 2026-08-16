@@ -6,11 +6,15 @@ create table if not exists public.profiles (
   music_platform text,
   music_profile_url text,
   taste_tags jsonb not null default '[]'::jsonb,
+  ai_report jsonb,
   created_at timestamptz not null default now()
 );
 
 alter table public.profiles
   add column if not exists music_platform text;
+
+alter table public.profiles
+  add column if not exists ai_report jsonb;
 
 alter table public.profiles
   add column if not exists music_profile_url text;

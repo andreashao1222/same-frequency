@@ -14,8 +14,8 @@ function overlap(a: string[], b: string[]) {
 function score(artistsA: string[], tagsA: string[], artistsB: string[], tagsB: string[]) {
   const sharedArtists = overlap(artistsA, artistsB);
   const sharedTags = overlap(tagsA, tagsB);
-  const artistScore = (sharedArtists.length / 5) * 60;
-  const tagScore = (sharedTags.length / Math.max(tagsA.length, tagsB.length, 1)) * 40;
+  const artistScore = (sharedArtists.length / 5) * 35;
+  const tagScore = (sharedTags.length / Math.max(Math.min(tagsA.length, tagsB.length), 1)) * 65;
   return Math.round(Math.min(100, artistScore + tagScore));
 }
 
@@ -25,7 +25,7 @@ export async function GET(req: Request) {
 
   const { data, error } = await client()
     .from("profiles")
-    .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, created_at")
+    .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, ai_report, created_at")
     .order("created_at", { ascending: false })
     .limit(200);
 
