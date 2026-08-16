@@ -6,8 +6,8 @@ export default function Home() {
     <main className="min-h-screen noise">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
         <Link href="/" className="font-mono text-sm font-black uppercase tracking-[.18em]">same frequency.</Link>
-        <Link href="/join" className="retro-button px-4 py-2 text-xs font-black uppercase tracking-[.12em] hover:bg-black hover:text-white">
-          join the pool →
+        <Link href="/pool" className="retro-button px-4 py-2 text-xs font-black uppercase tracking-[.12em] hover:bg-black hover:text-white">
+          view the pool →
         </Link>
       </nav>
 
@@ -43,9 +43,16 @@ export default function Home() {
         <Feature icon={<Users />} number="03" title="Share it" text="Turn your frequency into a screenshot-worthy cultural identity." />
       </section>
 
-      <footer className="flex items-center justify-between gap-6 border-t border-black px-6 py-8 text-sm text-neutral-500">
+      <footer className="flex flex-col gap-5 border-t border-black px-6 py-8 text-sm text-neutral-500 md:flex-row md:items-center md:justify-between">
         <span>same frequency. / made for people who care a little too much about music.</span>
-        <Link href="/admin" className="shrink-0 font-mono text-[10px] uppercase tracking-[.18em] underline underline-offset-4 hover:text-black">admin</Link>
+        <div className="flex items-center gap-5">
+          <Link href="/pool" className="font-mono text-[10px] font-black uppercase tracking-[.18em] text-black underline underline-offset-4 hover:no-underline">
+            view the pool →
+          </Link>
+          <Link href="/admin" className="font-mono text-[10px] uppercase tracking-[.18em] underline underline-offset-4 hover:text-black">
+            admin
+          </Link>
+        </div>
       </footer>
     </main>
   );
