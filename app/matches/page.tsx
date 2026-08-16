@@ -27,15 +27,14 @@ function escapeXml(value: string) {
 
 function posterSvg(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: { title: string; meta: string; reason: string; url?: string }) {
   const W = 900;
-  const H = 1760;
   const ink = "#171714";
   const paper = "#f3eee2";
   const red = "#a94f42";
   const muted = "#6f6a62";
-  const mono = `"Courier New", Courier, monospace`;
-  const serif = `Georgia, "Times New Roman", serif`;
+  const mono = `Courier New, Courier, monospace`;
+  const serif = `Georgia, Times New Roman, serif`;
 
-  const text = (value: string) => escapeXml(value);
+  const text = (value: string) => escapeXml(String(value || ""));
   const wrap = (value: string, maxChars: number) => {
     const words = String(value || "").split(/\s+/).filter(Boolean);
     const lines: string[] = [];
@@ -55,94 +54,136 @@ function posterSvg(profile: Profile, taste: ReturnType<typeof getTasteProfile>, 
   const multiline = (value: string, x: number, y: number, maxChars: number, lineHeight: number, attrs: string) =>
     wrap(value, maxChars).map((line, i) => `<text x="${x}" y="${y + i * lineHeight}" ${attrs}>${text(line)}</text>`).join("");
 
-  const artists = profile.artists.slice(0, 5).map((artist, i) => {
-    const y = 710 + i * 66;
-    return `<text x="76" y="${y}" font-family="Courier New, Courier, monospace" font-size="21" fill="${muted}">${String(i + 1).padStart(2, "0")}</text>
-      <text x="128" y="${y}" font-family="Courier New, Courier, monospace" font-size="23" font-weight="700" fill="${ink}">${text(artist)}</text>
-      <line x1="76" y1="${y + 20}" x2="490" y2="${y + 20}" stroke="${ink}" stroke-opacity=".18"/>`;
-  }).join("");
+  const portraitLines = wrap(taste.portrait, 58);
+  const readStart = 350;
+  const readEnd = readStart + portraitLines.length * 34 + 36;
+  const sectionTop = Math.max(500, readEnd + 22);
 
-  const sonic = [taste.weather, taste.place, taste.season, taste.feeling].filter(Boolean);
-  const sonicMarkup = sonic.map((item, i) => {
-    const y = 705 + i * 63;
-    return `${multiline(item, 548, y, 26, 24, `font-family="Courier New, Courier, monospace" font-size="16" fill="${ink}"`)}<line x1="548" y1="${y + 20 + Math.max(0, wrap(item, 26).length - 1) * 24}" x2="822" y2="${y + 20 + Math.max(0, wrap(item, 26).length - 1) * 24}" stroke="${ink}" stroke-opacity=".18"/>`;
-  }).join("");
+  // Left column: artist names get their own vertical space, so long names never collide.
+  let artistY = sectionTop + 92;
+  const artistMarkup: string[] = [];
+  for (let i = 0; i < 5; i++) {
+    const artist = profile.artists[i] || "";
+    const lines = wrap(artist, 25);
+    const nameStart = artistY;
+    artistMarkup.push(`<text x="76" y="${nameStart}" font-family="${mono}" font-size="21" fill="${muted}">${String(i + 1).padStart(2, "0")}</text>`);
+    artistMarkup.push(multiline(artist, 128, nameStart, 25, 24, `font-family="${mono}" font-size="22" font-weight="700" fill="${ink}"`));
+    const dividerY = nameStart + lines.length * 24 + 10;
+    artistMarkup.push(`<line x1="76" y1="${dividerY}" x2="490" y2="${dividerY}" stroke="${ink}" stroke-opacity=".16"/>`);
+    artistY = dividerY + 28;
+  }
+  const artistsEnd = artistY;
 
-  let tagY = 1038;
-  const tagMarkup: string[] = [];
+  // Right column: every line item is positioned after the previous one, not on fixed y values.
+  const sonicX = 548;
+  const sonicWidth = 26;
+  let sonicY = sectionTop + 88;
+  const sonicMarkup: string[] = [];
+  sonicMarkup.push(`<text x="${sonicX}" y="${sonicY}" font-family="${serif}" font-size="28" font-weight="700" fill="${ink}">${text(taste.color)}</text>`);
+  sonicY += 58;
+  for (const item of [taste.weather, taste.place, taste.season, taste.feeling]) {
+    const lines = wrap(item, sonicWidth);
+    sonicMarkup.push(multiline(item, sonicX, sonicY, sonicWidth, 23, `font-family="${mono}" font-size="16" fill="${ink}"`));
+    const dividerY = sonicY + lines.length * 23 + 10;
+    sonicMarkup.push(`<line x1="${sonicX}" y1="${dividerY}" x2="822" y2="${dividerY}" stroke="${ink}" stroke-opacity=".16"/>`);
+    sonicY = dividerY + 25;
+  }
+  const sonicEnd = sonicY;
+  const tasteWorldEnd = Math.max(artistsEnd, sonicEnd) + 6;
+
+  // Tags start below the entire two-column block, so they can never overlap the artist list.
+  const tagsLabelY = tasteWorldEnd + 30;
+  const tagStartY = tagsLabelY + 42;
+  let tagY = tagStartY;
   let tagX = 76;
+  const tagMarkup: string[] = [];
   for (const tag of taste.tags.slice(0, 6)) {
-    const width = Math.max(112, Math.min(300, tag.length * 9.5 + 34));
-    if (tagX + width > 824) { tagX = 76; tagY += 45; }
-    tagMarkup.push(`<rect x="${tagX}" y="${tagY - 22}" width="${width}" height="30" rx="15" fill="none" stroke="${ink}" stroke-width="1.2"/>`);
-    tagMarkup.push(`<text x="${tagX + 15}" y="${tagY - 2}" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" fill="${ink}">${text(tag)}</text>`);
+    const width = Math.max(112, Math.min(300, tag.length * 9.2 + 34));
+    if (tagX + width > 824) {
+      tagX = 76;
+      tagY += 42;
+    }
+    tagMarkup.push(`<rect x="${tagX}" y="${tagY - 21}" width="${width}" height="30" rx="15" fill="none" stroke="${ink}" stroke-width="1.2"/>`);
+    tagMarkup.push(`<text x="${tagX + 15}" y="${tagY - 1}" font-family="${mono}" font-size="13" font-weight="700" fill="${ink}">${text(tag)}</text>`);
     tagX += width + 10;
   }
-  const tagsEnd = tagY + 28;
+  const tagsEnd = tagY + 25;
 
-  const oppositeTop = tagsEnd + 52;
+  const oppositeLabelY = tagsEnd + 45;
+  const oppositeTitleY = oppositeLabelY + 45;
+  const oppositeMetaY = oppositeTitleY + 28;
+  const reasonStart = oppositeMetaY + 34;
   const reasonLines = wrap(opposite.reason, 62);
-  const reasonStart = oppositeTop + 95;
-  const barcodeTop = reasonStart + Math.max(2, reasonLines.length) * 24 + 42;
+  const barcodeTop = reasonStart + reasonLines.length * 24 + 44;
+  const barcodeHeight = 66;
+  const footerTextY = barcodeTop + barcodeHeight + 38;
+  const H = Math.max(1240, footerTextY + 82);
+
   const bars = Array.from({ length: 54 }, (_, i) => {
     const widths = [2, 3, 1, 4, 2, 1, 3, 2, 4];
     const w = widths[i % widths.length];
     const x = 235 + i * 8;
-    return `<rect x="${x}" y="${barcodeTop}" width="${w}" height="70" fill="${ink}"/>`;
+    return `<rect x="${x}" y="${barcodeTop}" width="${w}" height="${barcodeHeight}" fill="${ink}"/>`;
   }).join("");
-
   const zigzag = (y: number) => Array.from({ length: 45 }, (_, i) => `${i * 20},${y + (i % 2 ? 8 : 0)}`).join(" ");
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
-    <rect width="${W}" height="${H}" fill="#080808"/>
-    <path d="M70 20 H830 V${H - 20} H70 Z" fill="${paper}"/>
+    <rect width="${W}" height="${H}" fill="${paper}"/>
+    <!-- narrow dark trim stays outside the content-safe paper area -->
+    <rect x="0" y="0" width="28" height="${H}" fill="#080808"/>
+    <rect x="872" y="0" width="28" height="${H}" fill="#080808"/>
     <polygon points="${zigzag(20)}" fill="${paper}"/>
-    <polygon points="${zigzag(H - 20)}" fill="${paper}" transform="translate(0,${-8})"/>
+    <polygon points="${zigzag(H - 20)}" fill="${paper}" transform="translate(0,-8)"/>
+    <!-- small ticket notches on the side edges; they never enter the text area -->
+    ${Array.from({ length: 18 }, (_, i) => {
+      const y = 52 + i * ((H - 104) / 17);
+      return `<polygon points="28,${y - 7} 28,${y + 7} 36,${y}" fill="#080808"/><polygon points="872,${y - 7} 872,${y + 7} 864,${y}" fill="#080808"/>`;
+    }).join("")}
 
-    <text x="76" y="72" font-family="Courier New, Courier, monospace" font-size="14" font-weight="700" letter-spacing="2.5" fill="${ink}">SAME FREQUENCY.</text>
-    <text x="824" y="72" text-anchor="end" font-family="Courier New, Courier, monospace" font-size="13" fill="${ink}">NO. ${text(profile.id.slice(0, 6).toUpperCase())}</text>
-    <text x="76" y="96" font-family="Courier New, Courier, monospace" font-size="11" fill="${muted}">a tiny cultural taste experiment</text>
+    <text x="76" y="72" font-family="${mono}" font-size="14" font-weight="700" letter-spacing="2.5" fill="${ink}">SAME FREQUENCY.</text>
+    <text x="824" y="72" text-anchor="end" font-family="${mono}" font-size="13" fill="${ink}">NO. ${text(profile.id.slice(0, 6).toUpperCase())}</text>
+    <text x="76" y="96" font-family="${mono}" font-size="11" fill="${muted}">a tiny cultural taste experiment</text>
     <line x1="76" y1="120" x2="824" y2="120" stroke="${ink}" stroke-dasharray="4 7"/>
 
-    <text x="76" y="205" font-family="Georgia, Times New Roman, serif" font-size="67" font-weight="700" fill="${ink}">my frequency.</text>
-    <text x="76" y="238" font-family="Courier New, Courier, monospace" font-size="12" font-weight="700" letter-spacing="1.6" fill="${muted}">WHAT MY MUSIC TASTE SAYS ABOUT ME</text>
+    <text x="76" y="205" font-family="${serif}" font-size="67" font-weight="700" fill="${ink}">my frequency.</text>
+    <text x="76" y="238" font-family="${mono}" font-size="12" font-weight="700" letter-spacing="1.6" fill="${muted}">WHAT MY MUSIC TASTE SAYS ABOUT ME</text>
     <line x1="76" y1="268" x2="824" y2="268" stroke="${ink}" stroke-dasharray="4 7"/>
 
-    <text x="76" y="310" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">THE READ</text>
-    ${multiline(taste.portrait, 76, 350, 58, 34, `font-family="Courier New, Courier, monospace" font-size="23" font-weight="700" fill="${ink}"`)}
+    <text x="76" y="310" font-family="${mono}" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">THE READ</text>
+    ${multiline(taste.portrait, 76, readStart, 58, 34, `font-family="${mono}" font-size="23" font-weight="700" fill="${ink}"`)}
 
-    <line x1="76" y1="490" x2="824" y2="490" stroke="${ink}" stroke-dasharray="4 7"/>
-    <text x="76" y="530" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${ink}">MY FIVE</text>
-    <text x="548" y="530" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${ink}">MY SONIC WORLD</text>
-    <line x1="520" y1="552" x2="520" y2="1030" stroke="${ink}" stroke-dasharray="3 6"/>
-    ${artists}
-    <text x="548" y="580" font-family="Georgia, Times New Roman, serif" font-size="28" font-weight="700" fill="${ink}">${text(taste.color)}</text>
-    ${sonicMarkup}
+    <line x1="76" y1="${sectionTop - 24}" x2="824" y2="${sectionTop - 24}" stroke="${ink}" stroke-dasharray="4 7"/>
+    <text x="76" y="${sectionTop}" font-family="${mono}" font-size="13" font-weight="700" letter-spacing="2" fill="${ink}">MY FIVE</text>
+    <text x="548" y="${sectionTop}" font-family="${mono}" font-size="13" font-weight="700" letter-spacing="2" fill="${ink}">MY SONIC WORLD</text>
+    <line x1="520" y1="${sectionTop + 22}" x2="520" y2="${tasteWorldEnd - 4}" stroke="${ink}" stroke-dasharray="3 6"/>
+    ${artistMarkup.join("")}
+    ${sonicMarkup.join("")}
 
-    <line x1="76" y1="1010" x2="824" y2="1010" stroke="${ink}" stroke-dasharray="4 7"/>
-    <text x="76" y="1050" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">MY TAGS</text>
+    <line x1="76" y1="${tagsLabelY - 22}" x2="824" y2="${tagsLabelY - 22}" stroke="${ink}" stroke-dasharray="4 7"/>
+    <text x="76" y="${tagsLabelY}" font-family="${mono}" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">MY TAGS</text>
     ${tagMarkup.join("")}
 
     <line x1="76" y1="${tagsEnd + 8}" x2="824" y2="${tagsEnd + 8}" stroke="${ink}" stroke-dasharray="4 7"/>
-    <text x="76" y="${oppositeTop}" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">PROBABLY NOT MY THING</text>
-    <text x="76" y="${oppositeTop + 48}" font-family="Georgia, Times New Roman, serif" font-size="35" font-weight="700" fill="${ink}">${text(opposite.title)}</text>
-    <text x="76" y="${oppositeTop + 73}" font-family="Courier New, Courier, monospace" font-size="13" font-weight="700" fill="${ink}">${text(opposite.meta)}</text>
-    ${multiline(opposite.reason, 76, reasonStart, 62, 24, `font-family="Courier New, Courier, monospace" font-size="16" fill="${ink}"`)}
+    <text x="76" y="${oppositeLabelY}" font-family="${mono}" font-size="13" font-weight="700" letter-spacing="2" fill="${red}">PROBABLY NOT MY THING</text>
+    <text x="76" y="${oppositeTitleY}" font-family="${serif}" font-size="35" font-weight="700" fill="${ink}">${text(opposite.title)}</text>
+    <text x="76" y="${oppositeMetaY}" font-family="${mono}" font-size="13" font-weight="700" fill="${ink}">${text(opposite.meta)}</text>
+    ${multiline(opposite.reason, 76, reasonStart, 62, 24, `font-family="${mono}" font-size="16" fill="${ink}"`)}
 
     <line x1="76" y1="${barcodeTop - 25}" x2="824" y2="${barcodeTop - 25}" stroke="${ink}" stroke-dasharray="4 7"/>
     ${bars}
-    <text x="450" y="${barcodeTop + 95}" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="${ink}">THANKS FOR SHARING YOUR FREQUENCY.</text>
-    <text x="450" y="${barcodeTop + 120}" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" font-weight="700" letter-spacing="1.2" fill="${red}">SAME-FREQUENCY.</text>
+    <text x="450" y="${footerTextY}" text-anchor="middle" font-family="${mono}" font-size="12" font-weight="700" letter-spacing="1.2" fill="${ink}">THANKS FOR SHARING YOUR FREQUENCY.</text>
+    <text x="450" y="${footerTextY + 25}" text-anchor="middle" font-family="${mono}" font-size="12" font-weight="700" letter-spacing="1.2" fill="${red}">SAME-FREQUENCY.</text>
   </svg>`;
 }
+
 async function posterBlob(profile: Profile, taste: ReturnType<typeof getTasteProfile>, opposite: { title: string; meta: string; reason: string; url?: string }) {
   const svg = posterSvg(profile, taste, opposite);
   const image = new Image();
   image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
   await new Promise<void>((resolve, reject) => { image.onload = () => resolve(); image.onerror = () => reject(new Error("poster render failed")); });
   const canvas = document.createElement("canvas");
-  canvas.width = 900;
-  canvas.height = 1760;
+  canvas.width = image.naturalWidth || 900;
+  canvas.height = image.naturalHeight || 1400;
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("canvas unavailable");
   ctx.drawImage(image, 0, 0);
