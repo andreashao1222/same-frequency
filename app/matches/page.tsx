@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Share2, Sparkles } from "lucide-react";
-import { getTasteProfileFromTags, getCulturalMatches, getMusicalOpposite } from "@/lib/taste";
+import { getTasteProfile, getTasteProfileFromTags, getCulturalMatches, getMusicalOpposite } from "@/lib/taste";
 
 type Profile = {
   id: string;
