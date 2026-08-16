@@ -128,10 +128,12 @@ export async function analyzeTasteWithAI(
   artists: string[],
   artistGenres: string[][] = []
 ): Promise<AIReport> {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new AIAnalysisError("OPENAI_API_KEY is missing on the server.");
+  const apiKey = process.env.ARK_API_KEY;
+  if (!apiKey) throw new AIAnalysisError("ARK_API_KEY is missing on the server.");
 
-  const model = process.env.OPENAI_MODEL || "gpt-5.6";
+  // 火山方舟在线推理使用你在控制台创建的推理接入点 ID（Endpoint ID）。
+  const model = process.env.ARK_MODEL;
+  if (!model) throw new AIAnalysisError("ARK_MODEL is missing on the server. Set it to your Ark inference endpoint ID.");
   const artistContext = artists.map((artist, i) => {
     const genres = artistGenres[i]?.filter(Boolean).join(", ");
     return `${i + 1}. ${artist}${genres ? ` (Spotify catalog genres: ${genres})` : ""}`;
@@ -171,7 +173,10 @@ Requirements:
 Before returning the JSON, sanity-check the tags against the five artists. If five major rap/hip-hop artists are supplied, a result dominated by indie/alternative is incorrect.`;
 
   try {
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    // 火山方舟提供 OpenAI-compatible Chat Completions 接口。
+    // 为了兼容不同豆包模型，这里使用 json_object + prompt schema，
+    // 而不是依赖 OpenAI Responses API 的 json_schema 格式。
+    const response = await fetch("https://ark.cn-beijing.volces.com/api/v3/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -179,29 +184,32 @@ Before returning the JSON, sanity-check the tags against the five artists. If fi
       },
       body: JSON.stringify({
         model,
-        store: false,
-        input,
-        text: {
-          format: {
-            type: "json_schema",
-            name: "same_frequency_taste_report",
-            strict: true,
-            schema
-          }
-        }
+        messages: [
+          {
+            role: "system",
+            content: `You must return ONLY valid JSON. No markdown, no code fences, no commentary.
+
+The JSON must follow this exact shape and field types:
+${JSON.stringify(schema, null, 2)}`
+          },
+          { role: "user", content: input }
+        ],
+        response_format: { type: "json_object" },
+        temperature: 0.8,
+        max_tokens: 1800
       }),
       cache: "no-store"
     });
 
     const rawText = await response.text();
     if (!response.ok) {
-      let message = `OpenAI request failed (${response.status}).`;
+      let message = `Doubao request failed (${response.status}).`;
       try {
         const parsed = JSON.parse(rawText);
         const apiMessage = parsed?.error?.message;
         if (apiMessage) message += ` ${apiMessage}`;
       } catch {}
-      console.error("OpenAI taste analysis failed:", response.status, rawText);
+      console.error("Doubao taste analysis failed:", response.status, rawText);
       throw new AIAnalysisError(message, response.status);
     }
 
@@ -209,19 +217,20 @@ Before returning the JSON, sanity-check the tags against the five artists. If fi
     try {
       data = JSON.parse(rawText);
     } catch {
-      throw new AIAnalysisError("OpenAI returned an invalid response.");
+      throw new AIAnalysisError("Doubao returned an invalid response.");
     }
 
-    if (!data.output_text) {
-      console.error("OpenAI response had no output_text:", data);
-      throw new AIAnalysisError("OpenAI returned no taste report.");
+    const content = data?.choices?.[0]?.message?.content;
+    if (!content) {
+      console.error("Doubao response had no message content:", data);
+      throw new AIAnalysisError("Doubao returned no taste report.");
     }
 
     let parsedReport: unknown;
     try {
-      parsedReport = JSON.parse(data.output_text);
+      parsedReport = JSON.parse(content);
     } catch {
-      throw new AIAnalysisError("OpenAI returned invalid structured output.");
+      throw new AIAnalysisError("Doubao returned invalid JSON output.");
     }
 
     const report = cleanReport(parsedReport);
@@ -233,7 +242,7 @@ Before returning the JSON, sanity-check the tags against the five artists. If fi
     return report;
   } catch (error) {
     if (error instanceof AIAnalysisError) throw error;
-    console.error("OpenAI taste analysis error:", error);
+    console.error("Doubao taste analysis error:", error);
     throw new AIAnalysisError("Could not complete the AI taste analysis.");
   }
 }
