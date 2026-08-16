@@ -7,12 +7,15 @@ import { ArrowLeft, Check, Plus, X } from "lucide-react";
 
 type Artist = { id: string; name: string; spotifyUrl: string };
 
+const PLATFORMS = ["Spotify", "Apple Music", "SoundCloud", "YouTube Music", "NetEase Cloud Music", "QQ Music", "Other"];
+
 export default function JoinPage() {
   const router = useRouter();
   const [artists, setArtists] = useState<Artist[]>([]);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Artist[]>([]);
-  const [spotify, setSpotify] = useState("");
+  const [musicPlatform, setMusicPlatform] = useState("Spotify");
+  const [musicProfileUrl, setMusicProfileUrl] = useState("");
   const [error, setError] = useState("");
   const [searching, setSearching] = useState(false);
 
@@ -20,10 +23,15 @@ export default function JoinPage() {
     const timer = setTimeout(async () => {
       if (!query.trim() || artists.length >= 5) { setResults([]); return; }
       setSearching(true);
-      const res = await fetch(`/api/spotify/search?q=${encodeURIComponent(query)}`);
-      const data = await res.json();
-      setResults(data.artists ?? []);
-      setSearching(false);
+      try {
+        const res = await fetch(`/api/spotify/search?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+        setResults(data.artists ?? []);
+      } catch {
+        setResults([]);
+      } finally {
+        setSearching(false);
+      }
     }, 350);
     return () => clearTimeout(timer);
   }, [query, artists.length]);
@@ -41,21 +49,36 @@ export default function JoinPage() {
     e.preventDefault();
     setError("");
     if (artists.length !== 5) return setError("Choose exactly 5 artists.");
-    if (spotify.trim() && !/^https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[A-Z]{2})?\/)?(?:user|profile)\//i.test(spotify.trim())) {
-      return setError("Paste a valid Spotify profile link.");
+
+    const profileUrl = musicProfileUrl.trim();
+    if (profileUrl) {
+      try {
+        const parsed = new URL(profileUrl);
+        if (parsed.protocol !== "https:") throw new Error();
+        if (musicPlatform === "Spotify" && !/^https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}(?:-[A-Z]{2})?\/)?(?:user|profile)\//i.test(profileUrl)) {
+          return setError("Paste a valid Spotify profile link.");
+        }
+      } catch {
+        return setError("Paste a valid https profile link.");
+      }
     }
 
     const res = await fetch("/api/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ artists: artists.map(a => a.name), spotifyUrl: spotify.trim() })
+      body: JSON.stringify({
+        artists: artists.map(a => a.name),
+        musicPlatform: profileUrl ? musicPlatform : null,
+        musicProfileUrl: profileUrl || null,
+      })
     });
     const data = await res.json();
     if (!res.ok) return setError(data.error || "Something went wrong.");
 
     localStorage.setItem("sf_profile_id", data.profile.id);
     localStorage.setItem("sf_artists", JSON.stringify(artists.map(a => a.name)));
-    localStorage.setItem("sf_spotify", spotify.trim());
+    localStorage.setItem("sf_music_platform", data.profile.music_platform || "");
+    localStorage.setItem("sf_music_profile_url", data.profile.music_profile_url || "");
     router.push(`/matches?id=${data.profile.id}`);
   };
 
@@ -104,18 +127,23 @@ export default function JoinPage() {
               </div>
             )}
 
-            <p className="mt-3 text-xs text-neutral-500">Search results come from Spotify. Pick the exact artist rather than typing free-form text.</p>
+            <p className="mt-3 text-xs text-neutral-500">Artist search uses Spotify&apos;s public catalog. You do not need a Spotify account to participate.</p>
           </section>
 
           <section>
-            <label className="text-sm font-bold">your Spotify profile <span className="font-normal text-neutral-400">(optional)</span></label>
-            <p className="mt-1 text-sm text-neutral-500">Optional. Add it if you want friends to be able to find you on Spotify — you do not need Spotify to use the experiment.</p>
-            <input
-              value={spotify}
-              onChange={e => setSpotify(e.target.value)}
-              placeholder="https://open.spotify.com/user/... (optional)"
-              className="mt-5 w-full border-b-2 border-black bg-transparent py-4 text-lg outline-none placeholder:text-neutral-400 focus:bg-white"
-            />
+            <label className="text-sm font-bold">your music profile <span className="font-normal text-neutral-400">(optional)</span></label>
+            <p className="mt-1 text-sm text-neutral-500">Use whichever music service you actually use. This is optional and will only be shown as a profile link to other participants.</p>
+            <div className="mt-5 grid gap-3 md:grid-cols-[220px_1fr]">
+              <select value={musicPlatform} onChange={e => setMusicPlatform(e.target.value)} className="border-b-2 border-black bg-transparent py-4 text-lg outline-none">
+                {PLATFORMS.map(platform => <option key={platform}>{platform}</option>)}
+              </select>
+              <input
+                value={musicProfileUrl}
+                onChange={e => setMusicProfileUrl(e.target.value)}
+                placeholder="https://... (optional)"
+                className="border-b-2 border-black bg-transparent py-4 text-lg outline-none placeholder:text-neutral-400 focus:bg-white"
+              />
+            </div>
           </section>
 
           {error && <p className="border border-red-700 bg-red-50 p-3 text-sm font-bold text-red-800">{error}</p>}
@@ -125,7 +153,7 @@ export default function JoinPage() {
           </button>
 
           <p className="text-center text-xs text-neutral-500">
-            By joining, you agree that your selected artists and optional Spotify profile link can be displayed to other members.
+            By joining, you agree that your selected artists and optional music profile link can be displayed to other members.
           </p>
         </form>
       </div>

@@ -2,10 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 function client() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  return createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
 }
 
 function overlap(a: string[], b: string[]) {
@@ -23,12 +20,12 @@ function score(artistsA: string[], tagsA: string[], artistsB: string[], tagsB: s
 }
 
 export async function GET(req: Request) {
-  const url = new URL(req.url);
-  const currentId = url.searchParams.get("exclude");
+  const currentId = new URL(req.url).searchParams.get("exclude");
+  if (!currentId) return NextResponse.json({ matches: [] });
 
   const { data, error } = await client()
     .from("profiles")
-    .select("id, alias, artists, spotify_url, taste_tags, created_at")
+    .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, created_at")
     .order("created_at", { ascending: false })
     .limit(200);
 
@@ -45,8 +42,7 @@ export async function GET(req: Request) {
       sharedArtists: overlap(current.artists, p.artists),
       sharedTags: overlap(current.taste_tags, p.taste_tags),
     }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 20);
+    .sort((a, b) => b.score - a.score);
 
   return NextResponse.json({ matches });
 }

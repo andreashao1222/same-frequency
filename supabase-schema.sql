@@ -3,12 +3,25 @@ create table if not exists public.profiles (
   alias text not null unique,
   artists jsonb not null,
   spotify_url text unique,
+  music_platform text,
+  music_profile_url text,
   taste_tags jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now()
 );
 
--- Existing projects: let non-Spotify listeners join too.
-alter table public.profiles alter column spotify_url drop not null;
+alter table public.profiles
+  add column if not exists music_platform text;
+
+alter table public.profiles
+  add column if not exists music_profile_url text;
+
+alter table public.profiles
+  alter column spotify_url drop not null;
+
+update public.profiles
+set music_platform = coalesce(music_platform, 'Spotify'),
+    music_profile_url = coalesce(music_profile_url, spotify_url)
+where spotify_url is not null;
 
 alter table public.profiles enable row level security;
 
@@ -25,7 +38,11 @@ to anon, authenticated
 with check (
   jsonb_array_length(artists) = 5
   and jsonb_array_length(taste_tags) >= 1
-  and (spotify_url is null or spotify_url like 'https://open.spotify.com/%')
+  and (
+    music_profile_url is null
+    or music_platform <> 'Spotify'
+    or music_profile_url like 'https://open.spotify.com/%'
+  )
 );
 
 grant select, insert on public.profiles to anon, authenticated;
