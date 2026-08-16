@@ -2,6 +2,9 @@
 -- Music profile is optional and accepts any HTTPS profile link.
 
 alter table public.profiles
+  add column if not exists artist_genres jsonb;
+
+alter table public.profiles
   add column if not exists music_platform text;
 
 alter table public.profiles
@@ -37,3 +40,4 @@ with check (
 );
 
 grant select, insert on public.profiles to anon, authenticated;
+

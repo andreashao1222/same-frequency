@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { analyzeTasteWithAI } from "@/lib/ai";
+import { rebuildLocalReport } from "@/lib/ai";
 
 function client() {
   return createClient(
@@ -24,29 +24,24 @@ export async function GET(req: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   if (!data) return NextResponse.json({ error: "Profile not found." }, { status: 404 });
 
-  // Old profiles created before the AI version may not have ai_report.
-  // Generate it on first view instead of falling back to the old hardcoded
-  // indie/alternative system.
+  // Older profiles may not have a saved report. Rebuild it locally from the
+  // stored artist names instead of calling an external AI API.
   if (!data.ai_report && Array.isArray(data.artists) && data.artists.length === 5) {
     try {
-      const aiReport = await analyzeTasteWithAI(data.artists);
+      const report = rebuildLocalReport(data.artists, Array.isArray(data.taste_tags) ? data.taste_tags : []);
       const { data: updated, error: updateError } = await db
         .from("profiles")
-        .update({
-          taste_tags: aiReport.tags,
-          ai_report: aiReport
-        })
+        .update({ taste_tags: report.tags, ai_report: report })
         .eq("id", id)
         .select("id, alias, artists, music_platform, music_profile_url, spotify_url, taste_tags, ai_report, created_at")
         .single();
-
       if (updateError) throw updateError;
       return NextResponse.json({ profile: updated, regenerated: true });
     } catch (regenerationError) {
-      console.error("AI profile regeneration failed:", regenerationError);
+      console.error("Local profile regeneration failed:", regenerationError);
       return NextResponse.json(
-        { error: regenerationError instanceof Error ? regenerationError.message : "AI taste report is unavailable." },
-        { status: 502 }
+        { error: regenerationError instanceof Error ? regenerationError.message : "Could not build taste report." },
+        { status: 500 }
       );
     }
   }

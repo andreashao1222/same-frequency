@@ -11,6 +11,9 @@ create table if not exists public.profiles (
 );
 
 alter table public.profiles
+  add column if not exists artist_genres jsonb;
+
+alter table public.profiles
   add column if not exists music_platform text;
 
 alter table public.profiles

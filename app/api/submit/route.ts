@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { analyzeTasteWithAI, AIAnalysisError } from "@/lib/ai";
+import { analyzeTasteWithAI } from "@/lib/ai";
 import { getTasteProfile } from "@/lib/taste";
 
 function client() {
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
           return NextResponse.json({ profile: existing, existing: true });
         }
 
-        const aiReport = await analyzeTasteWithAI(existing.artists, artistGenres);
+        const aiReport = await analyzeTasteWithAI(existing.artists, Array.isArray(existing.artist_genres) ? existing.artist_genres : artistGenres);
         const { data: updated, error: updateError } = await db
           .from("profiles")
           .update({
@@ -74,8 +74,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // AI is now required. We deliberately do NOT fall back to the old
-    // hardcoded indie/alternative recommendation system.
+    // Build the report locally. There is no external AI/API credit involved.
     const aiReport = await analyzeTasteWithAI(artists, artistGenres);
 
     const { data, error } = await db.from("profiles").insert({
@@ -93,15 +92,8 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error(error);
 
-    if (error instanceof AIAnalysisError) {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 502 }
-      );
-    }
-
     return NextResponse.json(
-      { error: "Could not save your profile. Please try again." },
+      { error: error instanceof Error ? error.message : "Could not save your profile. Please try again." },
       { status: 500 }
     );
   }

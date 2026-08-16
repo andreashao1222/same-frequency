@@ -37,3 +37,8 @@ The Spotify Web API is used only for catalog artist search. The site does not re
 
 ### V8 AI report
 Reports are generated from the five selected artists using the OpenAI Responses API and saved in `profiles.ai_report`. The old hard-coded recommendation fallback is disabled.
+
+
+## V8 local taste engine
+
+No OpenAI or Doubao API is required. Artist metadata comes from Spotify search, with a free Deezer genre fallback when Spotify returns no genres. The report, cultural matches, musical opposite, and matching scores are computed locally.

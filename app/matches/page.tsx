@@ -134,8 +134,8 @@ function MatchesContent() {
       <main className="min-h-screen grid place-items-center noise p-6">
         <div className="max-w-xl text-center">
           <p className="text-xs font-bold uppercase tracking-[.2em]">same frequency.</p>
-          <h1 className="display mt-5 text-5xl">AI taste report unavailable.</h1>
-          <p className="mt-5 text-neutral-600">We couldn't generate this report yet. Please try opening it again in a moment.</p>
+          <h1 className="display mt-5 text-5xl">Taste report unavailable.</h1>
+          <p className="mt-5 text-neutral-600">We couldn't build this report yet. Please try opening it again in a moment.</p>
           <Link href="/join" className="mt-7 inline-block bg-black px-6 py-3 font-bold text-white">make my own →</Link>
         </div>
       </main>
@@ -193,7 +193,7 @@ function MatchesContent() {
         <div className="border-b-2 border-black pb-12">
           <p className="text-xs font-bold uppercase tracking-[.25em]">{isOwnReport ? "your frequency" : `${profile.alias}'s frequency`}</p>
           <h1 className="display mt-4 max-w-5xl text-6xl leading-[.88] md:text-8xl">What your music<br/><i>says about you.</i></h1>
-          <p className="mt-7 max-w-2xl text-lg leading-7 text-neutral-600">A tiny cultural profile built from the five artists this listener picked. The report is an AI reading of their sonic and cultural taste — not a personality test.</p>
+          <p className="mt-7 max-w-2xl text-lg leading-7 text-neutral-600">A tiny cultural profile built from the five artists this listener picked. The report is a playful local reading of their sonic and cultural taste — not a personality test.</p>
           <div className="mt-8 flex flex-wrap gap-2">{taste.tags.map(tag => <span key={tag} className="rounded-full bg-black px-4 py-2 text-sm font-bold text-white">{tag}</span>)}</div>
           {profile.music_profile_url && <a href={profile.music_profile_url} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-bold underline">open {profile.music_platform || "music"} profile <ExternalLink size={14}/></a>}
         </div>
