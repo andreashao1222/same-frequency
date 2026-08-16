@@ -1,0 +1,293 @@
+{
+  "version": 2,
+  "source_policy": {
+    "artist_metadata": "MusicBrainz",
+    "artist_metadata_note": "Tags/genres are fetched during the build step; do not hand-invent MusicBrainz tags.",
+    "recommendation_content": "Local curated static data"
+  },
+  "profiles": [
+    {
+      "id": "hiphop_alt",
+      "tags": [
+        "hip-hop",
+        "rap",
+        "alternative hip-hop",
+        "conscious hip hop",
+        "trap"
+      ],
+      "read": "You gravitate toward strong points of view, sharp production, memorable personalities, and music that feels culturally alive rather than merely decorative.",
+      "movies": [
+        "Do the Right Thing",
+        "Uncut Gems",
+        "Moonlight",
+        "Fruitvale Station",
+        "Sorry to Bother You"
+      ],
+      "books": [
+        "The Sellout",
+        "Between the World and Me",
+        "Giovanni's Room",
+        "White Teeth"
+      ],
+      "artists": [
+        "Little Simz",
+        "Tyler, The Creator",
+        "FKA twigs",
+        "JPEGMAFIA",
+        "Blood Orange"
+      ]
+    },
+    {
+      "id": "alt_rnb",
+      "tags": [
+        "r&b",
+        "alternative r&b",
+        "neo-soul",
+        "soul"
+      ],
+      "read": "You seem to care about emotional precision, atmosphere, groove, and the tiny details between confidence and vulnerability.",
+      "movies": [
+        "Moonlight",
+        "If Beale Street Could Talk",
+        "In the Mood for Love",
+        "Past Lives",
+        "Pariah"
+      ],
+      "books": [
+        "Giovanni's Room",
+        "The Bluest Eye",
+        "Normal People",
+        "On Earth We're Briefly Gorgeous"
+      ],
+      "artists": [
+        "Frank Ocean",
+        "Kelela",
+        "Sampha",
+        "Blood Orange",
+        "Ravyn Lenae"
+      ]
+    },
+    {
+      "id": "artpop",
+      "tags": [
+        "art pop",
+        "experimental pop",
+        "avant-garde",
+        "electronic",
+        "art rock"
+      ],
+      "read": "You are drawn to artists who make familiar forms feel strange again. Texture, structure, visual language, and unusual choices matter to you.",
+      "movies": [
+        "The Lobster",
+        "Under the Skin",
+        "Velvet Goldmine",
+        "The Holy Mountain",
+        "Poor Things"
+      ],
+      "books": [
+        "If on a winter's night a traveler",
+        "The Hearing Trumpet",
+        "Orlando",
+        "The Passion"
+      ],
+      "artists": [
+        "Kate Bush",
+        "Björk",
+        "Caroline Polachek",
+        "Arca",
+        "St. Vincent"
+      ]
+    },
+    {
+      "id": "dreamy",
+      "tags": [
+        "dream pop",
+        "shoegaze",
+        "ambient",
+        "ethereal wave"
+      ],
+      "read": "You want feelings with a little blur around the edges. Atmosphere matters almost as much as melody, and nostalgia is part of the appeal.",
+      "movies": [
+        "In the Mood for Love",
+        "Lost in Translation",
+        "Perfect Days",
+        "Portrait of a Lady on Fire",
+        "The Double Life of Véronique"
+      ],
+      "books": [
+        "Bluets",
+        "The Waves",
+        "The Bell Jar",
+        "The Summer Book"
+      ],
+      "artists": [
+        "Cocteau Twins",
+        "Slowdive",
+        "Beach House",
+        "Mazzy Star",
+        "Men I Trust"
+      ]
+    },
+    {
+      "id": "indie_songwriter",
+      "tags": [
+        "indie rock",
+        "indie folk",
+        "singer-songwriter",
+        "bedroom pop"
+      ],
+      "read": "You prefer personality over polish. Specific lyrics, emotional roughness, and small details make something feel more alive to you.",
+      "movies": [
+        "Frances Ha",
+        "Lady Bird",
+        "20th Century Women",
+        "The Worst Person in the World",
+        "Columbus"
+      ],
+      "books": [
+        "Normal People",
+        "The Idiot",
+        "Outline",
+        "The Argonauts"
+      ],
+      "artists": [
+        "Phoebe Bridgers",
+        "Mitski",
+        "Adrianne Lenker",
+        "Big Thief",
+        "Alex G"
+      ]
+    },
+    {
+      "id": "dark_alt",
+      "tags": [
+        "gothic",
+        "darkwave",
+        "post-punk",
+        "industrial",
+        "slowcore"
+      ],
+      "read": "You are comfortable with ambiguity, tension, and the beautiful side of things that are slightly unsettling.",
+      "movies": [
+        "The Lighthouse",
+        "Only Lovers Left Alive",
+        "Under the Skin",
+        "Black Swan",
+        "The Killing of a Sacred Deer"
+      ],
+      "books": [
+        "The Secret History",
+        "Rebecca",
+        "We Have Always Lived in the Castle",
+        "The Haunting of Hill House"
+      ],
+      "artists": [
+        "Portishead",
+        "PJ Harvey",
+        "Nine Inch Nails",
+        "Ethel Cain",
+        "Chelsea Wolfe"
+      ]
+    },
+    {
+      "id": "pop_max",
+      "tags": [
+        "pop",
+        "electropop",
+        "dance pop",
+        "hyperpop",
+        "synth-pop"
+      ],
+      "read": "You like a strong idea executed beautifully. Hooks, presentation, spectacle, and tiny production details can all matter at once.",
+      "movies": [
+        "Climax",
+        "Barbie",
+        "Moulin Rouge!",
+        "Showgirls",
+        "Priscilla"
+      ],
+      "books": [
+        "The Seven Husbands of Evelyn Hugo",
+        "Daisy Jones & The Six",
+        "Valley of the Dolls",
+        "My Year of Rest and Relaxation"
+      ],
+      "artists": [
+        "Charli xcx",
+        "Lady Gaga",
+        "Rina Sawayama",
+        "Caroline Polachek",
+        "Robyn"
+      ]
+    },
+    {
+      "id": "rock_alt",
+      "tags": [
+        "alternative rock",
+        "grunge",
+        "post-rock",
+        "punk",
+        "guitar"
+      ],
+      "read": "You like music with physical texture: distortion, dynamics, guitars, and a sense that the performance could fall apart in an interesting way.",
+      "movies": [
+        "Control",
+        "Almost Famous",
+        "Trainspotting",
+        "The Runaways",
+        "Velvet Goldmine"
+      ],
+      "books": [
+        "Just Kids",
+        "The Bell Jar",
+        "Please Kill Me",
+        "High Fidelity"
+      ],
+      "artists": [
+        "Radiohead",
+        "Nirvana",
+        "PJ Harvey",
+        "Yeah Yeah Yeahs",
+        "The Smashing Pumpkins"
+      ]
+    }
+  ],
+  "opposites": [
+    {
+      "id": "opp_polished",
+      "tags": [
+        "polished",
+        "mainstream pop",
+        "dance pop"
+      ],
+      "title": "Future Nostalgia",
+      "creator": "Dua Lipa",
+      "type": "album",
+      "reason": "You lean toward rough edges and idiosyncrasy; this is sleek, direct, polished pop built around immediate pleasure."
+    },
+    {
+      "id": "opp_minimal",
+      "tags": [
+        "minimalist",
+        "quiet",
+        "ambient"
+      ],
+      "title": "Climax",
+      "creator": "Gaspar Noé",
+      "type": "movie",
+      "reason": "You tend toward restraint and atmosphere; this deliberately turns volume, movement and chaos all the way up."
+    },
+    {
+      "id": "opp_conventional",
+      "tags": [
+        "adult contemporary",
+        "mainstream",
+        "conventional pop"
+      ],
+      "title": "Mamma Mia!",
+      "creator": "Phyllida Lloyd",
+      "type": "movie",
+      "reason": "Your taste may chase ambiguity and experimentation; this is deliberately accessible, bright and familiar."
+    }
+  ]
+}

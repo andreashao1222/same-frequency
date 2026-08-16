@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:musicbrainz": "node scripts/build_musicbrainz_db.mjs artists_seed.txt data/artist-tags.json"
   },
   "dependencies": {
     "next": "16.2.11",
