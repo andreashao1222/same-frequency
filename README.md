@@ -1,6 +1,29 @@
 # same frequency.
 
-A small MVP for matching people by music taste.
+A music-taste matching site built with Next.js, Supabase, and the Spotify Web API.
+
+## V2
+
+- Real Supabase user pool
+- Spotify artist search via server-side Client Credentials
+- Five-artist taste profile
+- Taste-style summary
+- Five curated discovery recommendations biased toward less-obvious artists
+- Match score based on both shared artists and shared taste tags
+- Clickable Spotify profile links
+
+## Environment variables
+
+Copy `.env.example` to `.env.local` and add:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SPOTIFY_CLIENT_ID`
+- `SPOTIFY_CLIENT_SECRET`
+
+## Supabase
+
+Run `supabase-schema.sql` in the Supabase SQL Editor.
 
 ## Run locally
 
@@ -9,25 +32,4 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000
-
-## Current MVP
-
-- Landing page
-- Five-artist taste profile
-- Spotify profile URL field
-- Demo matching algorithm
-- Match cards
-- Spotify profile links
-- LocalStorage for the current user's profile
-
-## Next production steps
-
-1. Replace demo artist suggestions with Spotify Web API artist search.
-2. Add Supabase database + Row Level Security.
-3. Store user profiles server-side.
-4. Calculate matches against the real user pool.
-5. Add moderation/reporting and privacy controls.
-6. Deploy to Vercel.
-
-The current similarity score is intentionally simple: shared artists / five selected artists.
+The Spotify Web API is used only for catalog artist search. The site does not request Spotify user authorization or private Spotify account data.

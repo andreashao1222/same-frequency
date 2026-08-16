@@ -2,25 +2,41 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Music2 } from "lucide-react";
-import { getMatches, seedUsers, User } from "@/lib/data";
+import { ArrowLeft, ExternalLink, Music2, Sparkles } from "lucide-react";
+import { getTasteProfile, recommendArtists } from "@/lib/taste";
 
-type Match = User & { score: number };
+type Profile = {
+  id: string;
+  alias: string;
+  artists: string[];
+  spotify_url: string;
+  taste_tags: string[];
+  score?: number;
+  sharedArtists?: string[];
+  sharedTags?: string[];
+};
 
 export default function MatchesPage() {
-  const [artists, setArtists] = useState<string[]>([]);
-  const [spotify, setSpotify] = useState("");
-  const [matches, setMatches] = useState<Match[]>([]);
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [matches, setMatches] = useState<Profile[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("sf_artists") || "[]");
-    const profile = localStorage.getItem("sf_spotify") || "";
-    setArtists(saved);
-    setSpotify(profile);
-    if (saved.length) setMatches(getMatches(saved, seedUsers));
+    const id = new URLSearchParams(window.location.search).get("id") || localStorage.getItem("sf_profile_id");
+    const artists = JSON.parse(localStorage.getItem("sf_artists") || "[]");
+    const spotify = localStorage.getItem("sf_spotify") || "";
+    if (!id) { setLoading(false); return; }
+
+    const taste = getTasteProfile(artists);
+    setProfile({ id, alias: "you", artists, spotify_url: spotify, taste_tags: taste.tags });
+
+    fetch(`/api/matches?exclude=${encodeURIComponent(id)}`)
+      .then(r => r.json())
+      .then(data => setMatches(data.matches ?? []))
+      .finally(() => setLoading(false));
   }, []);
 
-  if (!artists.length) {
+  if (!profile && !loading) {
     return (
       <main className="min-h-screen grid place-items-center noise p-6">
         <div className="text-center">
@@ -30,6 +46,11 @@ export default function MatchesPage() {
       </main>
     );
   }
+
+  if (!profile) return <main className="min-h-screen grid place-items-center noise">Loading…</main>;
+
+  const taste = getTasteProfile(profile.artists);
+  const recs = recommendArtists(profile.artists, 5);
 
   return (
     <main className="min-h-screen noise">
@@ -41,20 +62,45 @@ export default function MatchesPage() {
       <section className="mx-auto max-w-6xl px-6 pb-20 pt-10">
         <div className="border-b-2 border-black pb-10">
           <p className="text-xs font-bold uppercase tracking-[.25em]">your frequency</p>
-          <h1 className="display mt-4 text-6xl md:text-8xl">You&apos;re not the<br/><i>only one.</i></h1>
+          <h1 className="display mt-4 text-6xl md:text-8xl">Your taste is<br/><i>{taste.description}.</i></h1>
           <div className="mt-8 flex flex-wrap gap-2">
-            {artists.map(a => <span key={a} className="rounded-full border border-black px-4 py-2 text-sm font-bold">{a}</span>)}
+            {taste.tags.map(tag => <span key={tag} className="rounded-full bg-black px-4 py-2 text-sm font-bold text-white">{tag}</span>)}
           </div>
-          {spotify && <p className="mt-5 text-xs text-neutral-500">Spotify profile connected ✓</p>}
         </div>
 
-        <div className="mt-12 flex items-end justify-between">
-          <div>
-            <p className="text-sm font-bold">your closest matches</p>
-            <p className="mt-1 text-sm text-neutral-500">Based on your favorite artists.</p>
+        <section className="mt-12 border border-black bg-[#d9ff57] p-6 md:p-8">
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest"><Sparkles size={14}/> for your next rabbit hole</p>
+              <h2 className="display mt-3 text-4xl md:text-5xl">5 artists you might love.</h2>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-700">Picked from the same sonic neighborhood, with an extra bias toward artists you may be less likely to already know.</p>
+            </div>
           </div>
-          <span className="text-sm text-neutral-500">{matches.length} people</span>
+          <div className="mt-7 grid gap-3 md:grid-cols-5">
+            {recs.map((artist, i) => (
+              <a key={artist.name} href={artist.spotifyUrl} target="_blank" rel="noreferrer" className="group border border-black bg-white/50 p-4 hover:bg-white">
+                <p className="text-xs text-neutral-500">0{i + 1}</p>
+                <h3 className="mt-8 font-black">{artist.name}</h3>
+                <p className="mt-2 text-[11px] leading-4 text-neutral-600">{artist.tags.slice(0, 2).join(" · ")}</p>
+                <p className="mt-5 text-xs font-bold underline group-hover:no-underline">open Spotify ↗</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <div className="mt-14 flex items-end justify-between">
+          <div>
+            <p className="text-sm font-bold">people on your frequency</p>
+            <p className="mt-1 text-sm text-neutral-500">{loading ? "finding your closest listeners…" : `${matches.length} profiles in the current pool`}</p>
+          </div>
         </div>
+
+        {!loading && matches.length === 0 && (
+          <div className="mt-7 border border-dashed border-black p-10 text-center">
+            <p className="display text-3xl">You&apos;re early.</p>
+            <p className="mt-2 text-sm text-neutral-600">Share the site with a few music-obsessed friends and come back when the pool grows.</p>
+          </div>
+        )}
 
         <div className="mt-7 grid gap-6 md:grid-cols-2">
           {matches.map((user, i) => (
@@ -62,7 +108,7 @@ export default function MatchesPage() {
               <div className="flex items-start justify-between">
                 <div>
                   <p className="text-xs font-bold text-neutral-500">#{String(i + 1).padStart(2, "0")}</p>
-                  <h2 className="mt-1 text-2xl font-black">@{user.username}</h2>
+                  <h2 className="mt-1 text-2xl font-black">@{user.alias}</h2>
                 </div>
                 <div className="text-right">
                   <p className="display text-5xl">{user.score}%</p>
@@ -70,28 +116,31 @@ export default function MatchesPage() {
                 </div>
               </div>
 
-              <p className="mt-7 flex items-center gap-2 text-sm text-neutral-600"><Music2 size={15}/> {user.bio}</p>
+              <p className="mt-7 flex items-center gap-2 text-sm text-neutral-600"><Music2 size={15}/> {getTasteProfile(user.artists).description}</p>
+
+              {user.sharedArtists && user.sharedArtists.length > 0 && (
+                <p className="mt-4 text-xs font-bold">You both listen to: <span className="font-normal">{user.sharedArtists.join(" · ")}</span></p>
+              )}
+              {user.sharedTags && user.sharedTags.length > 0 && (
+                <p className="mt-2 text-xs text-neutral-500">Sonic overlap: {user.sharedTags.slice(0, 3).join(" · ")}</p>
+              )}
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {user.artists.map(a => {
-                  const same = artists.some(x => x.toLowerCase() === a.toLowerCase());
+                  const same = profile.artists.some(x => x.toLowerCase() === a.toLowerCase());
                   return <span key={a} className={`rounded-full px-3 py-1.5 text-xs font-bold ${same ? "bg-[#d9ff57]" : "bg-neutral-200"}`}>{a}</span>;
                 })}
               </div>
 
-              <a href={user.spotify} target="_blank" rel="noreferrer" className="mt-7 flex items-center justify-center gap-2 border border-black px-4 py-3 text-sm font-bold hover:bg-black hover:text-white">
+              <a href={user.spotify_url} target="_blank" rel="noreferrer" className="mt-7 flex items-center justify-center gap-2 border border-black px-4 py-3 text-sm font-bold hover:bg-black hover:text-white">
                 View Spotify profile <ExternalLink size={15}/>
               </a>
             </article>
           ))}
         </div>
 
-        <div className="mt-16 border border-black bg-[#d9ff57] p-6 md:p-8">
-          <p className="text-xs font-bold uppercase tracking-widest">mvp note</p>
-          <p className="mt-3 max-w-2xl text-lg leading-7">
-            These are demo profiles for the first version. The next step is connecting a real database and Spotify artist search so every person who joins becomes part of the pool.
-          </p>
-          <Link href="/join" className="mt-6 inline-flex items-center gap-2 text-sm font-black underline"><ArrowLeft size={15}/> add another profile</Link>
+        <div className="mt-16 border-t border-black pt-8 text-xs leading-5 text-neutral-500">
+          same frequency. only displays the alias, five selected artists, taste tags and Spotify profile link that a member chose to submit. No private Spotify account data is pulled into the site.
         </div>
       </section>
     </main>
