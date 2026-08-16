@@ -43,8 +43,9 @@ export default function Home() {
         <Feature icon={<Users />} number="03" title="Share it" text="Turn your frequency into a screenshot-worthy cultural identity." />
       </section>
 
-      <footer className="border-t border-black px-6 py-8 text-sm text-neutral-500">
-        same frequency. / made for people who care a little too much about music.
+      <footer className="flex items-center justify-between gap-6 border-t border-black px-6 py-8 text-sm text-neutral-500">
+        <span>same frequency. / made for people who care a little too much about music.</span>
+        <Link href="/admin" className="shrink-0 font-mono text-[10px] uppercase tracking-[.18em] underline underline-offset-4 hover:text-black">admin</Link>
       </footer>
     </main>
   );
