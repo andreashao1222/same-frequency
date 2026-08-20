@@ -1,44 +1,33 @@
-# same frequency.
+# Spending Track
 
-A music-taste matching site built with Next.js, Supabase, and the Spotify Web API.
+A small personal spending tracker that runs entirely in the browser.
 
-## V2
+## Features
 
-- Real Supabase user pool
-- Spotify artist search via server-side Client Credentials
-- Five-artist taste profile
-- Taste-style summary
-- Five curated discovery recommendations biased toward less-obvious artists
-- Match score based on both shared artists and shared taste tags
-- Clickable Spotify profile links
+- Monthly calendar homepage
+- Click any date to view/edit that day's spending
+- Daily categories:
+  - Lunch
+  - Dinner
+  - Coffee / milk tea / supermarket
+- Daily target: ¥70
+- Green circle = at or under ¥70
+- Red circle = over ¥70
+- Monthly total shows money saved or overspent compared with the ¥70 target
+- Optional pocket-money tracker
+- Set a different allowance amount for each 15-day period
+- Add pocket-money expenses with date, description, and amount
+- Warning when less than half of the allowance remains while the 15-day period is not yet halfway through
+- Data is saved locally in the browser with localStorage; nothing is uploaded to a server
 
-## Environment variables
+## GitHub Pages
 
-Copy `.env.example` to `.env.local` and add:
+1. Upload `index.html` to a GitHub repository.
+2. Open **Settings → Pages**.
+3. Choose **Deploy from a branch**.
+4. Select the branch containing `index.html` and `/ (root)`.
+5. Save.
 
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `SPOTIFY_CLIENT_ID`
-- `SPOTIFY_CLIENT_SECRET`
+## Vercel
 
-## Supabase
-
-Run `supabase-schema.sql` in the Supabase SQL Editor.
-
-## Run locally
-
-```bash
-npm install
-npm run dev
-```
-
-The Spotify Web API is used only for catalog artist search. The site does not request Spotify user authorization or private Spotify account data.
-
-
-### V8 AI report
-Reports are generated from the five selected artists using the OpenAI Responses API and saved in `profiles.ai_report`. The old hard-coded recommendation fallback is disabled.
-
-
-## V8 local taste engine
-
-No OpenAI or Doubao API is required. Artist metadata comes from Spotify search, with a free Deezer genre fallback when Spotify returns no genres. The report, cultural matches, musical opposite, and matching scores are computed locally.
+Import the GitHub repository into Vercel. No build command is required for this single-page version.
